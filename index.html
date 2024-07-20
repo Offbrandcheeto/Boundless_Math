@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="Images/favicon.png">
+    <meta name="description" content="Welcome to Parker Math! Enjoy a fun, interactive math game that improves addition, subtraction, multiplication, and division skills while teaching the value of overcoming challenges. Ideal for kids and adults, these engaging math challenges make learning exciting and enjoyable.">
+
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/responsive.css" />
+    <title>Parker Math</title>
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <header>
+      <nav class="top-navbar">
+        <div class="brand">
+          <h2>
+            <span class="logo-letter-p">P</span>
+            <span class="logo-letter-a">a</span>
+            <span class="logo-letter-r">r</span>
+            <span class="logo-letter-k">k</span>
+            <span class="logo-letter-e">e</span>
+            <span class="logo-letter-r">r</span>
+            <span> </span>
+            <span class="logo-letter-m">M</span>
+            <span class="logo-letter-a">a</span>
+            <span class="logo-letter-t">t</span>
+            <span class="logo-letter-h">h</span>
+        </h2>
+        </div>
+        <div class="nav-container">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="why.html">Why?</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Game Section -->
+    <section class="game-section">
+      <div class="game-navbar">
+        <ul class="scoreboard">
+          <li id="progress"></li>
+          <li id="correct">Correct: 0</li>
+          <li id="wrong">Wrong: 0</li>
+        </ul>
+      </div>
+      <div class="container">
+        <form autocomplete="off">
+          <label for="answer" id="question" class="question"></label>
+          <input type="number" id="answer"/>
+        </form>
+        <button id="main-btn" class="btn">Check Answer</button>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modal-text"></p>
+      </div>
+    </div>
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
+</html>

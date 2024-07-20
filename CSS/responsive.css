@@ -1,0 +1,179 @@
+@media (max-width: 1100px) {
+  .container {
+    width: 80%;
+    height: 50%;
+  }
+
+  .game-navbar {
+    width: 80%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 90%;
+  }
+
+  .game-navbar {
+    width: 90%;
+  }
+}
+@media (max-width: 821px) {
+  .learn-section h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-navbar .scoreboard {
+    gap: 1rem;
+  }
+
+  .modal-content {
+    font-size: 1rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .close {
+    top: 0;
+    font-size: 1.4rem;
+  }
+
+  .border {
+    border: 3px var(--main-text-color) solid;
+  }
+
+  .text-section h2 {
+    font-size: 2rem;
+    border-top: 4px solid var(--main-text-color);
+    border-bottom: 4px solid var(--main-text-color);
+  }
+
+  .text-section h3 {
+    font-size: 1.75rem;
+  }
+
+  .learn-section h3 {
+    margin: 0.25rem auto;
+    border-top: none;
+    border-bottom: 2px solid var(--main-text-color);
+  }
+
+  .text-p {
+    font-size: 1rem;
+  }
+
+  .contact-text {
+    font-size: 1rem;
+  }
+
+  .top-navbar .brand h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-navbar .nav-links li a {
+    font-size: 1.1rem;
+  }
+
+  .top-navbar .logo-letter-a,
+  .top-navbar .logo-letter-r,
+  .top-navbar .logo-letter-k,
+  .top-navbar .logo-letter-e,
+  .top-navbar .logo-letter-t,
+  .top-navbar .logo-letter-h {
+    display: none;
+  }
+
+  .top-navbar {
+    padding: 0 1rem;
+  }
+
+  .top-navbar .brand h2 {
+    gap: 0rem;
+  }
+
+  .top-navbar .nav-links {
+    gap: 0.5rem;
+  }
+
+  .game-navbar .scoreboard {
+    gap: 0.75rem;
+  }
+
+  .game-navbar .scoreboard li {
+    font-size: 0.75rem;
+  }
+
+  .game-navbar {
+    width: 90%;
+  }
+
+  .container {
+    padding: 2rem;
+  }
+
+  .question {
+    font-size: 1.5rem;
+  }
+
+  input[type="number"] {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  .border {
+    border: 3px var(--main-text-color) solid;
+    padding: 0.5rem;
+  }
+
+  .text-section {
+    width: 90%;
+    margin-bottom: 2rem;
+  }
+
+  .top-margin {
+    margin-top: 2rem;
+  }
+
+  .text-section h2 {
+    font-size: 1.5rem;
+    border-top: 3px solid var(--main-text-color);
+    border-bottom: 3px solid var(--main-text-color);
+    margin-bottom: 2rem;
+  }
+
+  .text-section h3 {
+    font-size: 1.5rem;
+  }
+
+  .why-section .text-p {
+    padding: 0.25rem;
+    text-align: justify;
+  }
+
+  .text-p {
+    font-size: 0.75rem;
+  }
+
+  .contact-text {
+    font-size: 0.75rem;
+  }
+
+  .learn-section h3 {
+    margin: 0.25rem auto;
+    border-top: none;
+    border-bottom: 1px solid var(--main-text-color);
+  }
+}
+
+@media (max-width: 400px) {
+  .modal-content {
+    font-size: 0.8rem;
+  }
+}

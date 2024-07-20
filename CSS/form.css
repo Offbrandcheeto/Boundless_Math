@@ -1,0 +1,108 @@
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+form {
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+input,
+textarea {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  width: 90%;
+  border: 3px #ddd solid;
+  margin-bottom: 2rem;
+  margin-top: 0.25rem;
+  padding: 1rem;
+  outline: 0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  border: 3px #007bff solid;
+}
+
+textarea {
+  height: 10rem;
+  resize: none;
+  font-size: 1rem;
+}
+
+input {
+  font-size: 1.5rem;
+}
+
+/* Submit Button */
+.form-btn {
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  background-color: #007bff;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  width: 25%;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.form-btn:hover {
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  label {
+    font-size: 1.5rem;
+  }
+
+  .form-btn {
+    width: 50%;
+  }
+
+  input,
+  textarea {
+    width: 80%;
+    font-size: 1.25rem;
+    border: 2px #ddd solid;
+  }
+
+  .form-btn {
+    font-size: 1.5rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  label {
+    font-size: 1.25rem;
+  }
+
+  input,
+  textarea {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  .form-btn {
+    font-size: 1.25rem;
+    padding: 0.75rem 1rem;
+  }
+}
