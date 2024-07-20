@@ -261,8 +261,8 @@ body {
   border-radius: 0 0 20px 20px;
   padding: 3.5rem 4rem;
   width: 60%;
-  height: 50%;
-  min-height: 400px;
+  height: 70%;
+  /* min-height: 400px; */
   background: #fff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }

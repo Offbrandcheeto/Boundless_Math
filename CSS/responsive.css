@@ -1,7 +1,8 @@
+/* Styles for screens up to 1100px wide, with a default height */
 @media (max-width: 1100px) {
   .container {
     width: 80%;
-    height: 50%;
+    height: 60%;
   }
 
   .game-navbar {
@@ -9,15 +10,76 @@
   }
 }
 
+/* Styles for screens up to 1000px wide */
 @media (max-width: 1000px) {
   .container {
     width: 90%;
+    height: 60%;
   }
-
+  
   .game-navbar {
     width: 90%;
   }
 }
+
+/* Styles for screens up to 900px wide and up to 1190px tall */
+@media (max-width: 900px) and (max-height: 1190px) {
+  .container {
+    height: 45%;
+  }
+}
+
+/* Styles for screens up to 1050px wide and up to 800px tall*/
+@media (max-width: 1050px) and (max-height: 800px) {
+  .container {
+    height: 60%;
+  }
+}
+
+/* Styles for screens up to 1190px wide and up to 830px tall*/
+@media (max-width: 1190px) and (max-height: 830px) {
+  .container {
+    height: 60%;
+  }
+}
+
+/* Styles for screens up to 1050px wide and up to 1400px tall, with a min width of 1000px*/
+@media (max-width: 1050px) and (max-height: 1400px) and (min-width: 1000px){
+  .container {
+    height: 60%;
+  }
+}
+
+/* iPad Pro vertical*/
+@media (max-width: 1050px) and (max-height: 1400px) and (min-width: 910px) and (min-height: 1300px){
+  .container {
+    height: 40%;
+  }
+
+  .top-navbar .brand h2 {
+    font-size: 2.5rem;
+  }
+
+  .top-navbar .nav-links li a {
+    font-size: 2.15rem;
+  }
+}
+
+/* iPad Pro horizontal */
+@media (max-width: 1400px) and (max-height: 1200px) and (min-width: 1300px){
+  .container {
+    height: 50%;
+  }
+
+  .top-navbar .brand h2 {
+    font-size: 3rem;
+  }
+
+  .top-navbar .nav-links li a {
+    font-size: 2.15rem;
+  }
+}
+
 @media (max-width: 821px) {
   .learn-section h2 {
     font-size: 2.5rem;
@@ -70,6 +132,10 @@
   .top-navbar .brand h2 {
     font-size: 2rem;
   }
+
+  .container {
+    height: 45%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -112,6 +178,7 @@
 
   .container {
     padding: 2rem;
+    height: 40%;
   }
 
   .question {
@@ -175,5 +242,9 @@
 @media (max-width: 400px) {
   .modal-content {
     font-size: 0.8rem;
+  }
+
+  .question {
+    margin-bottom: 0.75rem;
   }
 }
