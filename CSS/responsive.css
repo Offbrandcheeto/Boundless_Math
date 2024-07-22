@@ -13,11 +13,19 @@
   }
 
   input[type="number"] {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     font-size: 2rem;
   }
 
   .btn {
+    font-size: 2rem;
+  }
+
+  .top-navbar .brand h2 {
+    font-size: 3rem;
+  }
+
+  .top-navbar .nav-links li a {
     font-size: 2rem;
   }
 }
