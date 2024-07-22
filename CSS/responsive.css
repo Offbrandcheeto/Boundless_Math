@@ -28,6 +28,14 @@
   .top-navbar .nav-links li a {
     font-size: 1.85rem;
   }
+
+  .modal-content {
+    font-size: 1.6rem;
+  }
+
+  .close {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -38,6 +46,11 @@
 
   .game-navbar {
     width: 80%;
+  }
+
+  .modal-content {
+    width: 80%;
+    font-size: 1.3rem;
   }
 }
 
@@ -166,6 +179,10 @@
 
   .container {
     height: 45%;
+  }
+
+  .modal-content {
+    width: 85%;
   }
 }
 

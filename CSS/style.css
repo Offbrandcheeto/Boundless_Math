@@ -333,9 +333,8 @@ input::-webkit-inner-spin-button {
 .modal-content {
   background-color: #fff;
   padding: 2.25rem 1.5rem;
-  width: 80%;
+  width: 50%;
   line-height: 1.4;
-  max-width: 650px;
   position: relative;
   border-radius: 20px;
   font-size: 1.20rem;
