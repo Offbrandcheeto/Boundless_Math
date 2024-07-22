@@ -1,4 +1,3 @@
-/* Styles for screens up to 1100px wide, with a default height */
 @media (min-width: 1500px) {
   .container {
     height: 65%;
@@ -38,6 +37,7 @@
   }
 }
 
+/* Styles for screens up to 1100px wide, with a default height */
 @media (max-width: 1100px) {
   .container {
     width: 80%;
