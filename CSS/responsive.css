@@ -131,9 +131,7 @@
 }
 
 @media (max-width: 768px) {
-  .game-navbar .scoreboard {
-    gap: 1rem;
-  }
+
 
   .modal-content {
     font-size: 1rem;
@@ -212,16 +210,19 @@
     gap: 0.5rem;
   }
 
+  .game-navbar {
+    width: 90%;
+    padding: 0.5rem 0;
+  }
+
   .game-navbar .scoreboard {
-    gap: 0.75rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0rem;
   }
 
   .game-navbar .scoreboard li {
-    font-size: 0.75rem;
-  }
-
-  .game-navbar {
-    width: 90%;
+    font-size: 1.1rem;
   }
 
   .container {
@@ -230,11 +231,11 @@
   }
 
   .question {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   input[type="number"] {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .btn {
