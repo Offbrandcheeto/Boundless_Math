@@ -131,8 +131,6 @@
 }
 
 @media (max-width: 768px) {
-
-
   .modal-content {
     font-size: 1rem;
     padding: 1.5rem 1rem;
@@ -186,7 +184,7 @@
 
 @media (max-width: 480px) {
   .top-navbar .nav-links li a {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
   }
 
   .top-navbar .logo-letter-a,
@@ -222,7 +220,7 @@
   }
 
   .game-navbar .scoreboard li {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
   }
 
   .container {
@@ -295,5 +293,13 @@
 
   .question {
     margin-bottom: 0.75rem;
+  }
+
+  .game-navbar .scoreboard li {
+    font-size: 1.1rem;
+  }
+
+  .top-navbar .nav-links li a {
+    font-size: 1.1rem;
   }
 }
