@@ -2,6 +2,7 @@
 
 :root {
   --main-text-color: #222;
+  --main-blue-color: #007bff; 
   --animation-speed: 0.7s;
 }
 
@@ -33,7 +34,7 @@ body {
 
 /* Top navbar */
 .top-navbar {
-  background-color: #007bff;
+  background-color: var(--main-blue-color);
   width: 100vw;
   height: 8vh;
   padding: 0 2rem;
@@ -144,6 +145,103 @@ body {
   text-decoration: underline;
 }
 
+/* Shop */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; 
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  text-align: center;
+}
+
+.card-pack {
+  width: 85%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.card-pack:hover {
+  transform: scale(1.03);
+}
+
+.pack-info {
+  background-color: #fff;
+  color: var(--main-text-color);
+  border-radius: 10px;
+  margin-top: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  line-height: 1.4;
+  height: 100%;
+}
+
+.card-details {
+  text-align: left;
+  font-size: 1.15rem;
+}
+
+.snow-amount {
+  margin-top: 0.4rem;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.card-amount {
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--main-text-color);
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.shop-text {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  text-align: justify;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+.shop-title {
+  margin-bottom: 1rem !important;
+}
+
+.shop-heading {
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* Gallery */
+.gallery-title {
+  text-align: center;
+}
+
+.display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; 
+}
+
+.display-penguin {
+  text-align: center; 
+}
+
+.display-penguin img {
+  width: 95%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.display-penguin img:hover {
+  transform: scale(1.05);
+}
+
 /* Text section */
 .text-section {
   margin-bottom: 3rem;
@@ -228,7 +326,7 @@ body {
 }
 
 .game-navbar {
-  background-color: #007bff;
+  background-color: var(--main-blue-color);
   padding: 1.25rem 1rem;
   display: flex;
   justify-content: space-around;
@@ -252,6 +350,26 @@ body {
   letter-spacing: 0.075rem;
 }
 
+@keyframes pop {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  30% {
+    transform: scale(1.05) rotate(5deg);
+  }
+  60% {
+    transform: scale(1.05) rotate(-5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.pop-effect {
+  display: inline-block;
+  animation: pop 0.5s ease;
+}
+
 /* Main section */
 .container {
   display: flex;
@@ -268,7 +386,7 @@ body {
 }
 
 .question {
-  font-size: 2.3rem;
+  font-size: 2.4rem;
   margin-bottom: 1.4rem;
   color: var(--main-text-color);
   font-weight: 500;
@@ -305,10 +423,12 @@ input[type="number"] {
   font-size: 1.8rem;
   border-radius: 10px;
   background: #fff;
+  transition: border-color ease 0.5s, box-shadow 0.5s ease;
 }
 
 input[type="number"]:focus {
-  border-color: #007bff;
+  border-color: var(--main-blue-color);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
   outline: none;
 }
 
@@ -342,6 +462,48 @@ input::-webkit-inner-spin-button {
   text-align: justify;
 }
 
+/* Shop modal */
+.shop-modal {
+  display: none; 
+  position: fixed; 
+  top: 0;
+  z-index: 1001; 
+  width: 100vw; 
+  height: 100vh; 
+  background-color: rgba(0, 0, 0, 0.75);
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-modal-content {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
+}
+
+.pack-penguin {
+  width: 20vw;
+  height: auto;
+}
+
+#starter-modal .shop-modal-content {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+#classic-modal .shop-modal-content {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+#elite-modal .shop-modal-content {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+#elite-modal .pack-penguin {
+  width: 18.5vw;
+  height: auto; 
+}
 
 /* Close button */
 .close {
@@ -363,7 +525,7 @@ input::-webkit-inner-spin-button {
 /* Button class */
 .btn {
   font-family: "Poppins", sans-serif;
-  background-color: #007bff;
+  background-color: var(--main-blue-color);
   color: #fff;
   padding: 1rem 2rem;
   border: none;

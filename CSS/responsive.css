@@ -107,6 +107,15 @@
   .top-navbar .nav-links li a {
     font-size: 2.15rem;
   }
+
+  .shop-modal-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.25rem !important;
+  }
+
+  .pack-penguin {
+    width: 28vw !important;
+  }
 }
 
 /* iPad Pro horizontal */
@@ -127,6 +136,31 @@
 @media (max-width: 821px) {
   .learn-section h2 {
     font-size: 2.5rem;
+  }
+
+  .display-penguin {
+    flex: 1 1 calc(50% - 1rem);
+  }
+
+  .display {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  .gallery-section .gallery-title {
+    font-size: 3rem;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .shop-modal-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.1rem !important;
+  }
+
+  .pack-penguin {
+    width: 31vw !important;
   }
 }
 
@@ -163,6 +197,10 @@
 
   .text-p {
     font-size: 1rem;
+  }
+
+  .shop-text {
+    font-size: 1.25rem;
   }
 
   .contact-text {
@@ -275,6 +313,55 @@
     font-size: 0.75rem;
   }
 
+  .shop-text {
+    font-size: 1rem;
+  }
+
+  .display-penguin {
+    flex: 1 1 calc(100% - 1rem);
+    width: 100%;
+  }
+
+  .pack-info {
+    width: 90%;
+  }
+
+  .display {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+
+  .card-details {
+    font-size: 1.25rem;
+  }
+
+  .card-amount {
+    font-size: 1.5rem;
+  }
+
+  .flex-container .snow-amount {
+    font-size: 1.75rem;
+  }
+
+  .gallery-section .gallery-title {
+    font-size: 2.5rem;
+    border-top: 5px solid var(--main-text-color);
+    border-bottom: 5px solid var(--main-text-color);
+    letter-spacing: 3px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .shop-modal-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.1rem !important;
+  }
+
+  .pack-penguin {
+    width: 45vw !important;
+  }
+
   .contact-text {
     font-size: 0.75rem;
   }
@@ -301,5 +388,9 @@
 
   .top-navbar .nav-links li a {
     font-size: 1.1rem;
+  }
+
+  .pack-penguin {
+    width: 40vw !important;
   }
 }

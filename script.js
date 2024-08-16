@@ -1,11 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const mainBtn = document.getElementById('main-btn');
-  const questionEl = document.getElementById('question');
-  const answerEl = document.getElementById('answer');
-  const incorrectEl = document.getElementById('wrong');
-  const correctEl = document.getElementById('correct');
-  const progressEl = document.getElementById('progress');
-  const modal = document.getElementById("myModal");
+document.addEventListener("DOMContentLoaded", function() {
+  const mainBtn = document.getElementById("main-btn");
+  const questionEl = document.getElementById("question");
+  const answerEl = document.getElementById("answer");
+  const incorrectEl = document.getElementById("wrong");
+  const correctEl = document.getElementById("correct");
+  // const progressEl = document.getElementById("progress");
+  const snowEl = document.getElementById("snow");
+  const modal = document.getElementById("my-modal");
   const modalText = document.getElementById("modal-text")
   const span = document.getElementsByClassName("close")[0];
 
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     "Believe in yourself!"
   ];
 
-  const welcomePrompt = `Welcome to Parker Math! You'll begin by solving addition problems involving numbers between 0 and 10. The game will then automatically adjust its difficulty level based on your performance. If you correctly answer questions, it will challenge you with more complex ones. If you start getting problems incorrect, the game will move back to more manageable ones. Once you master a specific operation, the game will transition to the next one. Also, by design, the game doesn't save your progress. This allows you to revisit concepts and reinforce your learning. Be sure to find some free time throughout your week to play this game, and I wish you all the best on your journey. Also, please read the "Why?" section before you begin.`;
+  const welcomePrompt = `Welcome to Parker Math! This game adjusts its difficulty level based on your performance, challenging you with more complex problems if you answer questions correctly and moving back to easier ones if you start getting them wrong. Also, by design, the game doesn't save your progress. This allows you to revisit concepts and reinforce your learning. While playing, you also earn "Snow" each time you answer a question correctly. You then spend your "Snow" in the shop to open up packs of cards. The packs contain different fun and lovable penguins that you can collect. Try to make time to play this game every day and find all 16 penguins! Also, please read the "Why?" section before you begin. Good luck on your journey!`;
 
   const fiveWrongPrompt = "It looks like you have gotten five problems wrong in a row. First of all, good job. You are currently pushing yourself, and you keep showing up even in the face of difficulty. The game should go back to some more manageable problems for you to practice, but take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Don't be afraid to ask questions or seek out help. This is how you learn, and you're doing a great job. Keep it up.";
 
@@ -79,6 +80,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  function triggerPopEffect(isCorrect) {
+    // Determine the correct element
+    const elementId = isCorrect ? 'correct' : 'wrong';
+    const element = document.getElementById(elementId);
+  
+    // Add the pop-effect class
+    element.classList.add('pop-effect');
+  
+    // Remove the pop-effect class after the animation completes
+    element.addEventListener('animationend', () => {
+      element.classList.remove('pop-effect');
+    });
+  }
+
   // When the user clicks on (x), close the modal
   span.onclick = function() {
     modal.style.display = "none";
@@ -91,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
     modalText.textContent = text;
     setTimeout(function() {
       span.style.display = "block";
-    }, 15000);
+    }, 7500);
   }
 
   const SCORE_LEVEL_UP = 50;
@@ -100,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let operationIndex = 0;
   let difficultyLevel = 1;
   let score = 0;
+  let snow = 0;
   let correct = 0;
   let correctStreak = 0;
   let incorrect = 0;
@@ -111,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   correctEl.textContent = `Correct: ${correct}`;
   incorrectEl.textContent = `Incorrect: ${incorrect}`;
-  progressEl.textContent = `Progress: ${progress}%`;
+  // progressEl.textContent = `Progress: ${progress}%`;
 
   // Function to generate a question based on operation and difficulty level
   function generateQuestion(operation, difficultyLevel) {
@@ -159,8 +175,8 @@ document.addEventListener('DOMContentLoaded', function() {
       nextQuestion();
     } else {
       questionEl.textContent = "You have completed all operations! Excellent work!";
-      mainBtn.style.display = 'none';
-      answerEl.style.display = 'none';
+      mainBtn.style.display = "none";
+      answerEl.style.display = "none";
       displayModal(endPrompt);
 
       // Stop saving game state when game ends
@@ -170,8 +186,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Function to display the next question
   function nextQuestion() {
-    const savedQuestion = sessionStorage.getItem('currentQuestion');
-    const savedAnswer = sessionStorage.getItem('correctAnswer');
+    const savedQuestion = sessionStorage.getItem("currentQuestion");
+    const savedAnswer = sessionStorage.getItem("correctAnswer");
     if (savedQuestion && savedAnswer) {
       currentQuestion = savedQuestion;
       correctAnswer = parseFloat(savedAnswer);
@@ -187,11 +203,12 @@ document.addEventListener('DOMContentLoaded', function() {
     answerEl.value = '';
   }
   
-  // Function to check user's answer
+  // Handles wrong answers
   function wrongAnswer() {
     correctStreak = 0;
     incorrect++;
     incorrectStreak++;
+    triggerPopEffect(false);
     if (incorrectStreak === 5) {
       displayModal(fiveWrongPrompt);
     } else if (incorrectStreak === 10) {
@@ -199,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  // Function to check user"s answer
   function checkAnswer() {
     if (mainBtn.textContent === "Check Answer") {
       const userAnswer = parseFloat(answerEl.value);
@@ -207,7 +225,9 @@ document.addEventListener('DOMContentLoaded', function() {
           score++;
           correct++;
           correctStreak++;
+          snow += 10;
           incorrectStreak = 0;
+          triggerPopEffect(true);
           if (correctStreak % 5 === 0) {
             displayFeedback(`${correctStreak} In A Row!`, "#ffb121");
           } else {
@@ -240,8 +260,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
       // Clear the session storage
-      sessionStorage.removeItem('currentQuestion');
-      sessionStorage.removeItem('correctAnswer');
+      sessionStorage.removeItem("currentQuestion");
+      sessionStorage.removeItem("correctAnswer");
     
       // Check if score reaches the level up threshold
       if (score >= SCORE_LEVEL_UP) {
@@ -255,14 +275,15 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       return;
     }
+    updateScoreUI();
   }
   
   // Event listener for main button click
-  mainBtn.addEventListener('click', checkAnswer);
+  mainBtn.addEventListener("click", checkAnswer);
   
   // Event listener for Enter key press
-  document.addEventListener('keypress', e => {
-    if (e.code === 'Enter') {
+  document.addEventListener("keypress", e => {
+    if (e.code === "Enter") {
       e.preventDefault();
       checkAnswer();
     }
@@ -270,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Function to save game state to sessionStorage
   function saveGameState() {
-    sessionStorage.setItem('gameState', JSON.stringify({
+    sessionStorage.setItem("gameState", JSON.stringify({
       operationIndex: operationIndex,
       difficultyLevel: difficultyLevel,
       score: score,
@@ -280,15 +301,16 @@ document.addEventListener('DOMContentLoaded', function() {
       shownPrompt: shownPrompt,
       correctStreak: correctStreak,
       incorrectStreak: incorrectStreak,
-      levelUpPrompts: levelUpPrompts
+      levelUpPrompts: levelUpPrompts,
+      snow: snow,
     }));
-    sessionStorage.setItem('currentQuestion', currentQuestion);
-    sessionStorage.setItem('correctAnswer', correctAnswer);
+    sessionStorage.setItem("currentQuestion", currentQuestion);
+    sessionStorage.setItem("correctAnswer", correctAnswer);
   }
   
   // Function to load game state from sessionStorage
   function loadGameState() {
-    const gameState = JSON.parse(sessionStorage.getItem('gameState'));
+    const gameState = JSON.parse(sessionStorage.getItem("gameState"));
     if (gameState) {
       operationIndex = gameState.operationIndex;
       difficultyLevel = gameState.difficultyLevel;
@@ -300,10 +322,11 @@ document.addEventListener('DOMContentLoaded', function() {
       correctStreak = gameState.correctStreak;
       incorrectStreak = gameState.incorrectStreak;
       levelUpPrompts = gameState.levelUpPrompts;
+      snow = gameState.snow;
     }
 
-    const savedQuestion = sessionStorage.getItem('currentQuestion');
-    const savedAnswer = sessionStorage.getItem('correctAnswer');
+    const savedQuestion = sessionStorage.getItem("currentQuestion");
+    const savedAnswer = sessionStorage.getItem("correctAnswer");
     if (savedQuestion && savedAnswer) {
       currentQuestion = savedQuestion;
       correctAnswer = parseFloat(savedAnswer);
@@ -313,22 +336,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     correctEl.textContent = `Correct: ${correct}`;
     incorrectEl.textContent = `Incorrect: ${incorrect}`;
-    progressEl.textContent = `Progress: ${progress}%`;
+    // progressEl.textContent = `Progress: ${progress}%`;
+    snowEl.textContent = `Snow: ${snow}`;
   }
   
   // Load game state from sessionStorage at the beginning
   loadGameState();
   
-  // Save game state to sessionStorage every 100 milliseconds
+  // Save game state to sessionStorage every 500 milliseconds
   function updateScoreUI() {
     correctEl.textContent = `Correct: ${correct}`;
     incorrectEl.textContent = `Incorrect: ${incorrect}`;
     progress = Math.floor(((score / 200) + (operationIndex * .25)) * 100);
-    progressEl.textContent = `Progress: ${progress}%`;
+    // progressEl.textContent = `Progress: ${progress}%`;
+    snowEl.textContent = `Snow: ${snow}`;
   }
-  const saveInterval = setInterval(saveGameState, 100);
-  const updateUI = setInterval(updateScoreUI, 100);
+  const saveInterval = setInterval(saveGameState, 500);
   
   // Call startGame to begin the game
   startGame();
+  updateScoreUI();
 });
