@@ -68,26 +68,6 @@ textarea {
   resize: none;
 }
 
-.form-btn {
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1.65rem;
-  font-weight: 700;
-  transition: background-color 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
-}
-
-.form-btn:hover {
-  background-color: #0056b3;
-  opacity: 0.9;
-  transform: scale(1.05);
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .form-container {
@@ -103,11 +83,6 @@ textarea {
     font-size: 1.25rem;
     padding: 0.5rem;
   }
-
-  .form-btn {
-    font-size: 1.5rem;
-    padding: 0.75rem 1.5rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -119,10 +94,5 @@ textarea {
   textarea {
     font-size: 1rem;
     padding: 0.75rem;
-  }
-
-  .form-btn {
-    font-size: 1.25rem;
-    padding: 0.75rem 1rem;
   }
 }

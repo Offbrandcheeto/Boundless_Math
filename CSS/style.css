@@ -344,10 +344,23 @@ body {
 }
 
 .game-navbar .scoreboard li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   color: #fff;
   font-size: 1.75rem;
   font-weight: 800;
   letter-spacing: 0.075rem;
+}
+
+.game-icon {
+  width: 40px;
+  height: auto;
+}
+
+.game-nav-heading {
+  font-size: 2rem;
 }
 
 @keyframes pop {
@@ -450,6 +463,16 @@ input::-webkit-inner-spin-button {
   justify-content: center;
 }
 
+.top {
+  top: 0;
+}
+
+.modal-text {
+  font-size: 1.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 .modal-content {
   background-color: #fff;
   padding: 2.25rem 1.5rem;
@@ -460,6 +483,13 @@ input::-webkit-inner-spin-button {
   font-size: 1.20rem;
   font-weight: 700;
   text-align: justify;
+}
+
+.modal-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /* Shop modal */
@@ -522,7 +552,7 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-/* Button class */
+/* Button classes */
 .btn {
   font-family: "Poppins", sans-serif;
   background-color: var(--main-blue-color);
@@ -534,4 +564,18 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
   font-size: 1.8rem;
   font-weight: 600;
+}
+
+.small-btn {
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.65rem;
+  font-weight: 700;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }

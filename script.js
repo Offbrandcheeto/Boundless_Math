@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const mainBtn = document.getElementById("main-btn");
   const questionEl = document.getElementById("question");
   const answerEl = document.getElementById("answer");
-  const incorrectEl = document.getElementById("wrong");
+  const incorrectEl = document.getElementById("incorrect");
   const correctEl = document.getElementById("correct");
-  // const progressEl = document.getElementById("progress");
+  const progressEl = document.getElementById("progress");
   const snowEl = document.getElementById("snow");
   const modal = document.getElementById("my-modal");
   const modalText = document.getElementById("modal-text")
@@ -46,13 +46,13 @@ document.addEventListener("DOMContentLoaded", function() {
     "Believe in yourself!"
   ];
 
-  const welcomePrompt = `Welcome to Parker Math! This game adjusts its difficulty level based on your performance, challenging you with more complex problems if you answer questions correctly and moving back to easier ones if you start getting them wrong. Also, by design, the game doesn't save your progress. This allows you to revisit concepts and reinforce your learning. While playing, you also earn "Snow" each time you answer a question correctly. You then spend your "Snow" in the shop to open up packs of cards. The packs contain different fun and lovable penguins that you can collect. Try to make time to play this game every day and find all 16 penguins! Also, please read the "Why?" section before you begin. Good luck on your journey!`;
+  const welcomePrompt = `Parker Math is a math operations game that adjusts its difficulty based on your performance, challenging you with harder problems when you answer correctly and moving back to easier ones if you start getting them wrong. Your journey begins with addition, progressing to subtraction, multiplication, and eventually division. By design, the game doesn't save your progress, enabling you to revisit concepts and reinforce your learning. As you play, you'll earn "Snow" for each correct answer, which you can spend in the shop to open packs of collectible penguin cards. Make time to play every day and aim to collect all 18 penguins. Good luck on your journey!`;
 
-  const fiveWrongPrompt = "It looks like you have gotten five problems wrong in a row. First of all, good job. You are currently pushing yourself, and you keep showing up even in the face of difficulty. The game should go back to some more manageable problems for you to practice, but take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Don't be afraid to ask questions or seek out help. This is how you learn, and you're doing a great job. Keep it up.";
+  const fiveIncorrectPrompt = "It looks like you have gotten five problems incorrect in a row. First of all, good job. You are currently pushing yourself, and you keep showing up even in the face of difficulty. The game should go back to some more manageable problems for you to practice, but take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Don't be afraid to ask questions or seek out help. This is how you learn, and you're doing a great job. Keep it up.";
 
-  const tenWrongPrompt = "It looks like you have gotten ten problems wrong in a row. First of all, outstanding job. You are really pushing yourself, and you keep showing up even in the face of tremendous difficulty. Be sure to take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Review the concepts and do a little bit of practice on your own. Once you've done this, return to your open tab and continue playing. Remember you learn far more when you lose than when you win, so if you see others around you getting problems correct, don't get upset. Odds are that you are learning more than they are, and they should be envious of you. Keep going. I believe in you and have confidence in yourself."
+  const tenIncorrectPrompt = "It looks like you have gotten ten problems incorrect in a row. First of all, outstanding job. You are really pushing yourself, and you keep showing up even in the face of tremendous difficulty. Be sure to take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Review the concepts and do a little bit of practice on your own. Once you've done this, return to your open tab and continue playing. Remember you learn far more when you lose than when you win, so if you see others around you getting problems correct, don't get upset. Odds are that you are learning more than they are, and they should be envious of you. Keep going. I believe in you and have confidence in yourself."
 
-  const endPrompt = "Congratulations! You've completed an entire game of Parker Math, and this is an accomplishment you should be most proud of. No matter what your skill level was, you had to work hard and struggle along the way to get to this point. To those who didn't get many questions wrong, I congratulate you, and I'm blessed you've taken the time to play this game. To those who struggled and failed repeatedly to complete the game, I want to give you special congratulations. You learned the most, which should make the people around you jealous, and you should be overjoyed with yourself. You kept getting knocked down and got up with a smile. You showed a growth mindset and welcomed the failure you faced. Great job, and I hope to see you here again soon.";
+  const endPrompt = "Congratulations! You've completed an entire game of Parker Math, and this is an accomplishment you should be most proud of. No matter what your skill level was, you had to work hard and struggle along the way to get to this point. To those who didn't get many questions incorrect, I congratulate you, and I'm blessed you've taken the time to play this game. To those who struggled and failed repeatedly to complete the game, I want to give you special congratulations. You learned the most, which should make the people around you jealous, and you should be overjoyed with yourself. You kept getting knocked down and got up with a smile. You showed a growth mindset and welcomed the failure you faced. Great job, and I hope to see you here again soon.";
 
   displayModal(welcomePrompt);
 
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function triggerPopEffect(isCorrect) {
     // Determine the correct element
-    const elementId = isCorrect ? 'correct' : 'wrong';
+    const elementId = isCorrect ? 'correct' : 'incorrect';
     const element = document.getElementById(elementId);
   
     // Add the pop-effect class
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 7500);
   }
 
-  const SCORE_LEVEL_UP = 50;
+  const SCORE_LEVEL_UP = 60;
   let operations = ["addition", "subtraction", "multiplication", "division"];
   let levelUpPrompts = [false, false, false];
   let operationIndex = 0;
@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let snow = 0;
   let correct = 0;
   let correctStreak = 0;
+  let correctSavingsAccount = 0;
   let incorrect = 0;
   let incorrectStreak = 0;
   let progress = 0;
@@ -125,9 +126,9 @@ document.addEventListener("DOMContentLoaded", function() {
   let correctAnswer = null;
   let shownPrompt = false;
 
-  correctEl.textContent = `Correct: ${correct}`;
-  incorrectEl.textContent = `Incorrect: ${incorrect}`;
-  // progressEl.textContent = `Progress: ${progress}%`;
+  correctEl.textContent = correct;
+  incorrectEl.textContent = incorrect;
+  progressEl.textContent = `Progress: ${progress}%`;
 
   // Function to generate a question based on operation and difficulty level
   function generateQuestion(operation, difficultyLevel) {
@@ -203,16 +204,16 @@ document.addEventListener("DOMContentLoaded", function() {
     answerEl.value = '';
   }
   
-  // Handles wrong answers
-  function wrongAnswer() {
+  // Handles incorrect answers
+  function incorrectAnswer() {
     correctStreak = 0;
     incorrect++;
     incorrectStreak++;
     triggerPopEffect(false);
     if (incorrectStreak === 5) {
-      displayModal(fiveWrongPrompt);
+      displayModal(fiveIncorrectPrompt);
     } else if (incorrectStreak === 10) {
-      displayModal(tenWrongPrompt);
+      displayModal(tenIncorrectPrompt);
     }
   }
 
@@ -224,6 +225,8 @@ document.addEventListener("DOMContentLoaded", function() {
         if (userAnswer === correctAnswer) {
           score++;
           correct++;
+          correctSavingsAccount++;
+          readyToCompound = true;
           correctStreak++;
           snow += 10;
           incorrectStreak = 0;
@@ -234,18 +237,18 @@ document.addEventListener("DOMContentLoaded", function() {
             const randomMessage = positiveMessages[Math.floor(Math.random() * positiveMessages.length)];
             displayFeedback(`Correct. ${randomMessage}`, "#4caf50");
           }
-          if (score % 10 === 0) {
+          if (score % 12 === 0) {
             difficultyLevel++;
           }
         } else {
           if (score > 0) {
             score--;
           }
-          wrongAnswer()
+          incorrectAnswer()
           prevQuestion = currentQuestion;
           prevAnswer = correctAnswer;
-          displayFeedback("Incorrect.", "#f44335", prevQuestion, prevAnswer);
-          if (score >= 0 && score % 10 === 9) {
+          displayFeedback("Incorrect.", "#f44335", prevQuestion, prevAnswer); 
+          if (score >= 0 && score % 12 === 11) {
             difficultyLevel--;
           }
         }
@@ -253,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (score > 0) {
           score--;
         }
-        wrongAnswer()
+        incorrectAnswer()
         displayFeedback("Invalid Input!", "#f44336");
         if (score >= 0 && score % 10 === 9) {
           difficultyLevel--;
@@ -296,6 +299,7 @@ document.addEventListener("DOMContentLoaded", function() {
       difficultyLevel: difficultyLevel,
       score: score,
       correct: correct,
+      correctSavingsAccount: correctSavingsAccount,
       incorrect: incorrect,
       progress: progress,
       shownPrompt: shownPrompt,
@@ -316,6 +320,7 @@ document.addEventListener("DOMContentLoaded", function() {
       difficultyLevel = gameState.difficultyLevel;
       score = gameState.score;
       correct = gameState.correct;
+      correctSavingsAccount = gameState.correctSavingsAccount;
       incorrect = gameState.incorrect;
       progress = gameState.progress;
       shownPrompt = gameState.shownPrompt;
@@ -334,10 +339,10 @@ document.addEventListener("DOMContentLoaded", function() {
       answerEl.value = '';
     }
 
-    correctEl.textContent = `Correct: ${correct}`;
+    correctEl.textContent = `:${correct}`;
     incorrectEl.textContent = `Incorrect: ${incorrect}`;
-    // progressEl.textContent = `Progress: ${progress}%`;
-    snowEl.textContent = `Snow: ${snow}`;
+    progressEl.textContent = `Progress: ${progress}%`;
+    snowEl.textContent = snow;
   }
   
   // Load game state from sessionStorage at the beginning
@@ -345,11 +350,11 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Save game state to sessionStorage every 500 milliseconds
   function updateScoreUI() {
-    correctEl.textContent = `Correct: ${correct}`;
-    incorrectEl.textContent = `Incorrect: ${incorrect}`;
-    progress = Math.floor(((score / 200) + (operationIndex * .25)) * 100);
-    // progressEl.textContent = `Progress: ${progress}%`;
-    snowEl.textContent = `Snow: ${snow}`;
+    correctEl.textContent = correct;
+    incorrectEl.textContent = incorrect;
+    progress = Math.floor(((score / 240) + (operationIndex * .25)) * 100);
+    progressEl.textContent = `Progress: ${progress}%`;
+    snowEl.textContent = snow;
   }
   const saveInterval = setInterval(saveGameState, 500);
   

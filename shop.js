@@ -9,27 +9,32 @@ const classicImageContainer = document.getElementById("classic-image-display");
 const eliteImageContainer = document.getElementById("elite-image-display");
 const shopSnow = document.getElementById("shop-snow");
 
-const alex = document.getElementById("card-one");
-const avery = document.getElementById("card-two");
-const casey = document.getElementById("card-three");
-const harper = document.getElementById("card-four");
-const sammy = document.getElementById("card-five");
-const taylor = document.getElementById("card-six");
-const blaze = document.getElementById("card-seven");
-const gabe = document.getElementById("card-eight");
-const leela = document.getElementById("card-nine");
-const pebble = document.getElementById("card-ten");
-const riley = document.getElementById("card-eleven");
-const thomas = document.getElementById("card-twelve");
-const adric = document.getElementById("card-thirteen");
-const ralph = document.getElementById("card-fourteen");
-const sarah = document.getElementById("card-fifteen");
-const parker = document.getElementById("card-sixteen");
+const alex = document.getElementById("alex");
+const avery = document.getElementById("avery");
+const caleb = document.getElementById("caleb");
+const casey = document.getElementById("casey");
+const harper = document.getElementById("harper");
+const lucky = document.getElementById("lucky");
+const sammy = document.getElementById("sammy");
+const taylor = document.getElementById("taylor");
+const blaze = document.getElementById("blaze")
+const gabe = document.getElementById("gabe");
+const leela = document.getElementById("leela");
+const pebble = document.getElementById("pebble");
+const riley = document.getElementById("riley");
+const thomas = document.getElementById("thomas");
+const adric = document.getElementById("adric");
+const ralph = document.getElementById("ralph");
+const sarah = document.getElementById("sarah");
+const parker = document.getElementById("parker");
+
 
 let alexUnlocked = false;
 let averyUnlocked = false;
+let calebUnlocked = false;
 let caseyUnlocked = false;
 let harperUnlocked = false;
+let luckyUnlocked = false;
 let sammyUnlocked = false;
 let taylorUnlocked = false;
 let blazeUnlocked = false;
@@ -45,7 +50,7 @@ let parkerUnlocked = false;
 
 let snow = 0;
 
-const commonPenguins = ["Alex", "Avery", "Casey", "Harper", "Sammy", "Taylor"];
+const commonPenguins = ["Alex", "Avery", "Caleb", "Casey", "Harper", "Lucky", "Sammy", "Taylor"];
 const uncommonPenguins = ["Blaze", "Gabe", "Leela", "Pebble", "Riley", "Thomas"];
 const rarePenguins = ["Adric", "Ralph", "Sarah"];
 const secretPenguins = ["Parker"];
@@ -59,11 +64,17 @@ function penguinCheck(penguin) {
     case "Avery":
       averyUnlocked = true;
       break;
+    case "Caleb":
+      calebUnlocked = true;
+      break;
     case "Casey":
       caseyUnlocked = true;
       break;
     case "Harper":
       harperUnlocked = true;
+      break;
+    case "Lucky":
+      luckyUnlocked = true;
       break;
     case "Sammy":
       sammyUnlocked = true;
@@ -131,8 +142,10 @@ function loadGameState() {
   if (gameStatePenguins) {
     alexUnlocked = gameStatePenguins.alexUnlocked;
     averyUnlocked = gameStatePenguins.averyUnlocked;
+    calebUnlocked = gameStatePenguins.calebUnlocked;
     caseyUnlocked = gameStatePenguins.caseyUnlocked;
     harperUnlocked = gameStatePenguins.harperUnlocked;
+    luckyUnlocked = gameStatePenguins.luckyUnlocked;
     sammyUnlocked = gameStatePenguins.sammyUnlocked;
     taylorUnlocked = gameStatePenguins.taylorUnlocked;
     blazeUnlocked = gameStatePenguins.blazeUnlocked;
@@ -159,8 +172,10 @@ function galleryUpdate() {
   
   alex.src = alexUnlocked ? "Images/Penguin_Cards/Commons/Alex.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
   avery.src = averyUnlocked ? "Images/Penguin_Cards/Commons/Avery.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
+  caleb.src = calebUnlocked ? "Images/Penguin_Cards/Commons/Caleb.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
   casey.src = caseyUnlocked ? "Images/Penguin_Cards/Commons/Casey.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
   harper.src = harperUnlocked ? "Images/Penguin_Cards/Commons/Harper.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
+  lucky.src = luckyUnlocked ? "Images/Penguin_Cards/Commons/Lucky.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
   sammy.src = sammyUnlocked ? "Images/Penguin_Cards/Commons/Sammy.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
   taylor.src = taylorUnlocked ? "Images/Penguin_Cards/Commons/Taylor.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
   blaze.src = blazeUnlocked ? "Images/Penguin_Cards/Uncommons/Blaze.svg" : "Images/Penguin_Cards/Uncommon_Locked_Card.svg";
@@ -180,8 +195,10 @@ function saveGameState() {
     snow: snow,
     alexUnlocked: alexUnlocked,
     averyUnlocked: averyUnlocked,
+    calebUnlocked: calebUnlocked,
     caseyUnlocked: caseyUnlocked,
     harperUnlocked: harperUnlocked,
+    luckyUnlocked: luckyUnlocked,
     sammyUnlocked: sammyUnlocked,
     taylorUnlocked: taylorUnlocked,
     blazeUnlocked: blazeUnlocked,
@@ -307,7 +324,7 @@ function elitePackOpen() {
         if (randomNum < 0.1) {
           penguin = commonPenguins[Math.floor(Math.random() * commonPenguins.length)];
           imageUrl = `Images/Penguin_Cards/Commons/${penguin}.svg`;
-        } else if (randomNum < 0.30) {
+        } else if (randomNum < 0.45) {
           penguin = uncommonPenguins[Math.floor(Math.random() * uncommonPenguins.length)];
           imageUrl = `Images/Penguin_Cards/Uncommons/${penguin}.svg`;
         } else if (randomNum < 0.80) {
