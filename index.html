@@ -3,23 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="Images/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="Images/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="Images/favicon-48x48.png" sizes="48x48" type="image/png">
-    <link rel="icon" href="Images/favicon-64x64.png" sizes="64x64" type="image/png">
-    
-    <meta name="description" content="Welcome to Parker Math! Enjoy a fun, interactive math game that improves addition, subtraction, multiplication, and division skills while teaching the value of overcoming challenges. Ideal for kids and adults, these engaging math challenges make learning exciting and enjoyable.">
-
+    <link rel="icon" href="Images/Favicons/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-48x48.png" sizes="48x48" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-64x64.png" sizes="64x64" type="image/png" />
     <link rel="stylesheet" href="CSS/style.css" />
     <link rel="stylesheet" href="CSS/responsive.css" />
+    
+    <meta name="description" content="Welcome to Parker Math! Enjoy a fun, interactive math game that improves addition, subtraction, multiplication, and division skills while teaching the value of overcoming challenges. Ideal for kids and adults, these engaging math challenges make learning exciting and enjoyable." />
+
     <title>Parker Math</title>
   </head>
   <body>
     <!-- Top Navbar -->
     <header>
       <nav class="top-navbar">
-        <div class="brand">
-          <h2>
+        <div>
+          <h2 class="logo-heading">
             <span class="logo-letter-p">P</span>
             <span class="logo-letter-a">a</span>
             <span class="logo-letter-r">r</span>
@@ -35,11 +35,11 @@
         </div>
         <div class="nav-container">
           <ul class="nav-links">
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="saving.html">Save</a></li>
-            <li><a href="why.html">Why?</a></li>
-            <li><a href="learn.html">Learn</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="shop.html" class="nav-link">Shop</a></li>
+            <li><a href="save.html" class="nav-link">Save</a></li>
+            <li><a href="why.html" class="nav-link">Why?</a></li>
+            <li><a href="learn.html" class="nav-link">Learn</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -49,25 +49,25 @@
     <section class="game-section">
       <div class="game-navbar">
         <ul class="scoreboard">
-          <li id="progress"></li>
-           <li>
-            <img src="Images/Snowflake.svg" alt="Check mark" class="game-icon">
-            <h2 id="snow" class="game-nav-heading"></h2>
-           </li>
-          <li>
-            <img src="Images/Check_Mark.svg" alt="Check mark" class="game-icon">
-            <h2 id="correct" class="game-nav-heading"></h2>
+          <li id="progress" class="scoreboard-item"></li>
+          <li class="scoreboard-item">
+            <img src="Images/Icons/Snowflake.svg" alt="Snowflake" class="game-icon" />
+            <h2 id="snow" class="game-heading"></h2>
           </li>
-          <li>
-            <img src="Images/X_Mark.svg" alt="Check mark" class="game-icon">
-            <h2 id="incorrect" class="game-nav-heading"></h2>
+          <li class="scoreboard-item">
+            <img src="Images/Icons/Check_Mark.svg" alt="Check mark" class="game-icon" />
+            <h2 id="correct" class="game-heading"></h2>
+          </li>
+          <li class="scoreboard-item">
+            <img src="Images/Icons/X_Mark.svg" alt="X mark" class="game-icon" />
+            <h2 id="incorrect" class="game-heading"></h2>
           </li>
         </ul>
       </div>
       <div class="container">
         <form autocomplete="off">
           <label for="answer" id="question" class="question"></label>
-          <input type="number" id="answer"/>
+          <input type="number" id="answer" class="main-input" />
         </form>
         <button id="main-btn" class="btn">Check Answer</button>
       </div>
@@ -80,7 +80,8 @@
         <p id="modal-text"></p>
       </div>
     </div>
+    
     <!-- Script -->
-    <script src="script.js"></script>
+    <script src="Scripts/script.js"></script>
   </body>
 </html>

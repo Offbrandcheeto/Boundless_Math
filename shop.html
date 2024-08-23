@@ -3,23 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="Images/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="Images/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="Images/favicon-48x48.png" sizes="48x48" type="image/png">
-    <link rel="icon" href="Images/favicon-64x64.png" sizes="64x64" type="image/png">
-    
-    <meta name="description" content="Explore the Parker Math Shop! Use the points you earn in the game to buy packs of collectible cards. Enhance your math skills while having fun and rewarding yourself with awesome rewards. Perfect for players of all ages.">
-
+    <link rel="icon" href="Images/Favicons/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-48x48.png" sizes="48x48" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-64x64.png" sizes="64x64" type="image/png" />
     <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/shop.css" />
     <link rel="stylesheet" href="CSS/responsive.css" />
+    
+    <meta name="description" content="Explore the Parker Math Shop! Use the points you earn in the game to buy packs of collectible cards. Enhance your math skills while having fun and rewarding yourself with awesome rewards. Perfect for players of all ages." />
+    
     <title>Parker Math | Shop</title>
   </head>
-  <body class="white">
+  <body class="white-background">
     <!-- Top Navbar -->
     <header>
       <nav class="top-navbar">
-        <div class="brand">
-          <h2>
+        <div>
+          <h2 class="logo-heading">
             <span class="logo-letter-p">P</span>
             <span class="logo-letter-a">a</span>
             <span class="logo-letter-r">r</span>
@@ -35,135 +36,265 @@
         </div>
         <div class="nav-container">
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="saving.html">Save</a></li>
-            <li><a href="why.html">Why?</a></li>
-            <li><a href="learn.html">Learn</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="save.html" class="nav-link">Save</a></li>
+            <li><a href="why.html" class="nav-link">Why?</a></li>
+            <li><a href="learn.html" class="nav-link">Learn</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
         </div>
       </nav>
     </header>
-    
-    <section class="shop-section text-section top-margin">
-        <h2 class="shop-title">Penguin Shop</h2>
-        <p class="shop-text">Welcome to the Penguin Shop! Here, you use the Snow that you've earned from answering questions to open packs of cards. In the different packs, you will find unique penguins to collect. Penguin rarities are common, uncommon, rare, and secret rare. Keep playing to earn more Snow so you can find them all!</p>
-        <h3 id="shop-snow" class="shop-heading"></h3>
-        <div class="grid-container">
-          <div class="grid-item">
-            <div class="pack-info">
-              <img id="starter-pack" class="card-pack" src="Images/Penguin_Cards/Card_Packs/Starter_Pack.svg" alt="Starter penguin pack" loading="lazy">
-              <h3 class="snow-amount">75 Snow</h3>
-              <h4 class="card-amount">2 Cards</h4>
-              <h4 class="card-details">1 Common</h4>
-              <h4 class="card-details">2nd Card:</h4>
-              <h4 class="card-details">50% Common</h4>
-              <h4 class="card-details">50% Uncommon</h4>
-            </div>
-          </div>
-          <div class="grid-item">
-            <div class="pack-info">
-              <img id="classic-pack" class="card-pack" src="Images/Penguin_Cards/Card_Packs/Classic_Pack.svg" alt="Classic penguin pack" loading="lazy">
-              <h3 class="snow-amount">150 Snow</h3>
-              <h4 class="card-amount">3 Cards</h4>
-              <h4 class="card-details">1 Common</h4>
-              <h4 class="card-details">1 Uncommon</h4>
-              <h4 class="card-details">3rd Card:</h4>
-              <h4 class="card-details">35% Common</h4>
-              <h4 class="card-details">50% Uncommon</h4>
-              <h4 class="card-details">15% Rare</h4>
-            </div>
-          </div>
-          <div class="grid-item">
-            <div class="pack-info">
-              <img id="elite-pack" class="card-pack" src="Images/Penguin_Cards/Card_Packs/Elite_Pack.svg" alt="Elite penguin pack" loading="lazy">
-              <h3 class="snow-amount">250 Snow</h3>
-              <h4 class="card-amount">5 Cards</h4>
-              <h4 class="card-details">2 Common</h4>
-              <h4 class="card-details">1 Uncommon</h4>
-              <h4 class="card-details">1 Rare</h4>
-              <h4 class="card-details">5th Card:</h4>
-              <h4 class="card-details">10% Common</h4>
-              <h4 class="card-details">35% Uncommon</h4>
-              <h4 class="card-details">35% Rare</h4>
-              <h4 class="card-details">20% Secret Rare</h4>
-            </div>
-          </div>
-        </div>
 
-    <section class="gallery-section">
-      <h2 class="gallery-title top-margin">Penguin Gallery</h2>
-      <div class="display">
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="alex">
+    <section class="text-section top-margin">
+      <h2 class="shop-heading-large text-heading-large">Penguin Shop</h2>
+      <p class="shop-text">
+        Welcome to the Penguin Shop! Here, you use the Snow that you've earned from answering questions to open packs of cards. In the different packs, you will find unique penguins to collect. Penguin rarities are common, uncommon, rare, and secret rare. Keep playing to earn more Snow so you can find them all!
+      </p>
+      <h3 id="shop-snow" class="shop-heading-medium"></h3>
+      <div class="grid-container">
+        <div class="grid-item">
+          <div class="pack-info">
+            <img
+              src="Images/Penguin_Cards/Card_Packs/Starter_Pack.svg"
+              alt="Starter penguin pack"
+              loading="lazy"
+              id="starter-pack"
+              class="card-pack"
+            />
+            <h3 class="snow-amount">75 Snow</h3>
+            <h4 class="card-amount">2 Cards</h4>
+            <h4 class="card-details">1 Common</h4>
+            <h4 class="card-details">2nd Card:</h4>
+            <h4 class="card-details">50% Common</h4>
+            <h4 class="card-details">50% Uncommon</h4>
+          </div>
         </div>
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="avery">
+        <div class="grid-item">
+          <div class="pack-info">
+            <img
+              src="Images/Penguin_Cards/Card_Packs/Classic_Pack.svg"
+              alt="Classic penguin pack"
+              loading="lazy"
+              id="classic-pack"
+              class="card-pack"
+            />
+            <h3 class="snow-amount">150 Snow</h3>
+            <h4 class="card-amount">3 Cards</h4>
+            <h4 class="card-details">1 Common</h4>
+            <h4 class="card-details">1 Uncommon</h4>
+            <h4 class="card-details">3rd Card:</h4>
+            <h4 class="card-details">35% Common</h4>
+            <h4 class="card-details">50% Uncommon</h4>
+            <h4 class="card-details">15% Rare</h4>
+          </div>
         </div>
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="caleb">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="casey">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="harper">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="lucky">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="sammy">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="taylor">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="blaze">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="gabe">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="leela">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="pebble">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="riley">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="thomas">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="adric">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="ralph">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="sarah">
-        </div> 
-        <div class="display-penguin">
-          <img src="#" alt="Penguin card" loading="lazy" id="parker">
-        </div> 
+        <div class="grid-item">
+          <div class="pack-info">
+            <img
+              src="Images/Penguin_Cards/Card_Packs/Elite_Pack.svg"
+              alt="Elite penguin pack"
+              loading="lazy"
+              id="elite-pack"
+              class="card-pack"
+            />
+            <h3 class="snow-amount">250 Snow</h3>
+            <h4 class="card-amount">5 Cards</h4>
+            <h4 class="card-details">2 Common</h4>
+            <h4 class="card-details">1 Uncommon</h4>
+            <h4 class="card-details">1 Rare</h4>
+            <h4 class="card-details">5th Card:</h4>
+            <h4 class="card-details">10% Common</h4>
+            <h4 class="card-details">35% Uncommon</h4>
+            <h4 class="card-details">35% Rare</h4>
+            <h4 class="card-details">20% Secret Rare</h4>
+          </div>
+        </div>
       </div>
+
+      <section class="gallery-section">
+        <h2 class="gallery-title top-margin text-heading-large">Penguin Gallery</h2>
+        <div class="display">
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="alex"
+              class="penguin-img"
+            />
+          </div>
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="avery"
+              class="penguin-img"
+            />
+          </div>
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="caleb"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="casey"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="harper"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="lucky"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="sammy"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="taylor"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="blaze"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="gabe"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="leela"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="pebble"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="riley"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="thomas"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="adric"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="ralph"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="sarah"
+              class="penguin-img"
+            />
+          </div> 
+          <div class="display-penguin">
+            <img
+              src="#"
+              alt="Penguin card"
+              loading="lazy"
+              id="parker"
+              class="penguin-img"
+            />
+          </div> 
+        </div>
+      </section>
     </section>
-    </section> 
-        
+
     <!-- Modal -->
     <div id="starter-modal" class="shop-modal">
-      <div class="shop-modal-content" id="starter-image-display"></div>
+      <div id="starter-image-display" class="shop-modal-content"></div>
     </div>
+
     <div id="classic-modal" class="shop-modal">
-      <div class="shop-modal-content" id="classic-image-display"></div>
+      <div id="classic-image-display" class="shop-modal-content"></div>
     </div>
+    
     <div id="elite-modal" class="shop-modal">
-      <div class="shop-modal-content" id="elite-image-display"></div>
+      <div id="elite-image-display" class="shop-modal-content"></div>
     </div>
     
     <!-- Script -->
-    <script src="shop.js"></script>
+    <script src="Scripts/shop.js"></script>
   </body>
 </html>

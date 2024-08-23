@@ -1,0 +1,271 @@
+/* Shop */
+.text-section .shop-heading-large {
+  margin-bottom: 1rem;
+}
+
+.text-section .shop-heading-medium {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: var(--semi-bold);
+}
+
+.text-section .shop-text {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  text-align: justify;
+  line-height: 1.8;
+  font-weight: var(--semi-bold);
+}
+
+.text-section .grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; 
+}
+
+.text-section .grid-container .grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  text-align: center;
+}
+
+.text-section .grid-container .grid-item .pack-info {
+  background-color: #fff;
+  color: var(--main-text-color);
+  border-radius: 10px;
+  margin-top: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  line-height: 1.4;
+  height: 100%;
+}
+
+.text-section .grid-container .grid-item .pack-info .card-pack {
+  width: 85%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.text-section .grid-container .grid-item .pack-info .card-pack:hover {
+  transform: scale(1.03);
+}
+
+.text-section .grid-container .grid-item .pack-info .snow-amount {
+  margin-top: 0.4rem;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.text-section .grid-container .grid-item .pack-info .card-amount {
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--main-text-color);
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.text-section .grid-container .grid-item .pack-info .card-details {
+  text-align: left;
+  font-size: 1.15rem;
+}
+
+/* Gallery */
+.text-section .gallery-section .gallery-title {
+  text-align: center;
+}
+
+.text-section .gallery-section .display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem; 
+}
+
+.text-section .gallery-section .display .display-penguin {
+  text-align: center; 
+}
+
+.text-section .gallery-section .display .display-penguin .penguin-img {
+  width: 95%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.text-section .gallery-section .display .display-penguin .penguin-img:hover {
+  transform: scale(1.05);
+}
+
+/* Shop modal */
+.shop-modal {
+  display: none; 
+  position: fixed; 
+  top: 0;
+  z-index: 1001; 
+  width: 100vw; 
+  height: 100vh; 
+  background-color: rgba(0, 0, 0, 0.75);
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-modal .shop-modal-content {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
+}
+
+/* JS added class for sizing */
+.pack-penguin {
+  width: 20vw;
+  height: auto;
+}
+
+/* Sizing modals */
+#starter-modal .shop-modal-content {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+#classic-modal .shop-modal-content {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+#elite-modal .shop-modal-content {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+#elite-modal .pack-penguin {
+  width: 18.5vw;
+  height: auto; 
+}
+
+/* Responsive */
+
+/* Larger screens */
+@media (min-width: 1500px) {
+  .text-section .grid-container {
+    gap: 0rem; 
+  }
+
+  .text-section .grid-container .grid-item .pack-info{
+    padding: 2rem;
+  }
+  
+  .text-section .grid-container .grid-item .pack-info .card-pack {
+    width: 100%;
+  }
+  
+  .text-section .gallery-section .display .display-penguin .penguin-img {
+    width: 85%;
+  }
+}
+
+/* iPad Pro vertical*/
+@media (max-width: 1050px) and (max-height: 1400px) and (min-width: 910px) and (min-height: 1300px) {
+  .shop-modal .shop-modal-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.25rem !important;
+  }
+
+  /* JS added class for sizing */
+  .pack-penguin {
+    width: 28vw !important;
+  }
+}
+
+@media (max-width: 821px) {
+  .text-section .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .text-section .shop-text {
+    font-size: 1.25rem;
+  }
+
+  .text-section .gallery-section .display .display-penguin {
+    flex: 1 1 calc(50% - 1rem);
+  }
+
+  .text-section .gallery-section .display {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  .text-section .gallery-section .gallery-title {
+    font-size: 3rem;
+  }
+
+  .shop-modal .shop-modal-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.1rem !important;
+  }
+
+  /* JS added class for sizing */
+  .pack-penguin {
+    width: 31vw !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-section .gallery-section .gallery-title {
+    font-size: 2.5rem;
+    border-top: 5px solid var(--main-text-color);
+    border-bottom: 5px solid var(--main-text-color);
+    letter-spacing: 3px;
+  }
+  
+  .text-section .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .text-section .shop-heading-medium {
+    font-size: 1.5rem;
+  }
+
+  .text-section .shop-text {
+    font-size: 1rem;
+  }
+
+  .text-section .gallery-section .display .display-penguin {
+    flex: 1 1 calc(100% - 1rem);
+    width: 100%;
+  }
+
+  .text-section .grid-container .grid-item .pack-info {
+    width: 90%;
+  }
+
+  .text-section .gallery-section .display {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+
+  .text-section .grid-container .grid-item .pack-info .card-details {
+    font-size: 1.25rem;
+  }
+
+  .text-section .grid-container .grid-item .pack-info .card-amount {
+    font-size: 1.5rem;
+  }
+
+  .text-section .grid-container .grid-item .pack-info .snow-amount {
+    font-size: 1.75rem;
+  }
+
+  .shop-modal-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.1rem !important;
+  }
+
+  /* JS added class for sizing */
+  .pack-penguin {
+    width: 45vw !important;
+  }
+}
+
+@media (max-width: 400px) {
+  /* JS added class for sizing */
+  .pack-penguin {
+    width: 40vw !important;
+  }
+}

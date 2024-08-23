@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="Images/Favicons/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-48x48.png" sizes="48x48" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-64x64.png" sizes="64x64" type="image/png" />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/save.css" />
+    <link rel="stylesheet" href="CSS/responsive.css" />
+    
+    <meta name="description" content="Discover the Parker Math Savings Account feature! Learn how to save and manage Snow earned in the game to unlock collectible card packs. Enhance your math skills while enjoying fun rewards. Ideal for players of all ages." />
+
+    <title>Parker Math | Save</title>
+  </head>
+  <body class="white-background">
+    <!-- Top Navbar -->
+    <header>
+      <nav class="top-navbar">
+        <div>
+          <h2 class="logo-heading">
+            <span class="logo-letter-p">P</span>
+            <span class="logo-letter-a">a</span>
+            <span class="logo-letter-r">r</span>
+            <span class="logo-letter-k">k</span>
+            <span class="logo-letter-e">e</span>
+            <span class="logo-letter-r">r</span>
+            <span> </span>
+            <span class="logo-letter-m">M</span>
+            <span class="logo-letter-a">a</span>
+            <span class="logo-letter-t">t</span>
+            <span class="logo-letter-h">h</span>
+          </h2>
+        </div>
+        <div class="nav-container">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="shop.html" class="nav-link">Shop</a></li>
+            <li><a href="why.html" class="nav-link">Why?</a></li>
+            <li><a href="learn.html" class="nav-link">Learn</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    
+    <section class="text-section top-margin">
+      <h2 class="save-heading-large text-heading-large">Savings Account</h2>
+      <p class="save-text">
+        Saving is one of the best things you can do with your money. When you save, you set aside money that will grow over time just by being in a savings account. 
+        Instead of spending on things like fancy clothes or the latest phone, you can watch your money grow. Saving helps you work toward big goals that will 
+        benefit you in the future. If you're in elementary or middle school, you don't need to worry about opening a savings account just yet. 
+        When you're ready, ask a parent or guardian to help. For now, keep the idea of saving in mind so you'll be prepared when it's time to start.
+      </p>
+      <div class="save-container">
+        <div class="save-item">
+          <h3 class="save-heading-medium">Snow Savings Account</h3>
+          <p class="save-text">
+            In Parker Math, you can save your Snow just like you would with money in a savings account. When your Snow is saved, you can't spend it on packs of cards 
+            right away, but over time, you'll earn extra Snow. This extra Snow will help you buy even more packs later on. You can deposit as much of your Snow as you 
+            want and take it out whenever you like. Plus, your saved Snow will grow by 1% for every question you answer correctly and won't lose any value if you answer 
+            a question wrong. 1% may not sound like much, but you'll see that it adds up quickly!
+          </p>
+          <div class="saving-info">
+            <h3 id="current-snow" class="save-heading-medium"></h3>
+            <h3 id="saved-snow" class="save-heading-medium"></h3>
+            <h3 id="interest-earned" class="save-heading-small interest-heading"></h3>
+            <div class="save-buttons">
+              <button id="add-snow"class="small-btn green">Add Snow</button>
+              <button id="take-snow" class="small-btn red">Take Snow</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> 
+
+    <!-- Modal -->
+    <div id="modal" class="modal top">
+      <div class="modal-content modal-center">
+        <span id="close-btn" class="close">&times;</span>
+        <p id="modal-text" class="modal-text" ></p>
+        <input type="number" id="modal-input" class="main-input" placeholder="Enter a value" />
+        <button id="submit-btn" class="small-btn">Submit</button>
+      </div>
+    </div>
+
+    <!-- Script -->
+    <script src="Scripts/save.js"></script>
+  </body>
+</html>

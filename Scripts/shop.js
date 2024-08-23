@@ -1,3 +1,4 @@
+// Const variables
 const starterPackEl = document.getElementById("starter-pack");
 const classicPackEl = document.getElementById("classic-pack");
 const elitePackEl = document.getElementById("elite-pack");
@@ -9,6 +10,7 @@ const classicImageContainer = document.getElementById("classic-image-display");
 const eliteImageContainer = document.getElementById("elite-image-display");
 const shopSnow = document.getElementById("shop-snow");
 
+// Penguins
 const alex = document.getElementById("alex");
 const avery = document.getElementById("avery");
 const caleb = document.getElementById("caleb");
@@ -28,6 +30,8 @@ const ralph = document.getElementById("ralph");
 const sarah = document.getElementById("sarah");
 const parker = document.getElementById("parker");
 
+// Let variables
+let snow = 0;
 
 let alexUnlocked = false;
 let averyUnlocked = false;
@@ -48,14 +52,21 @@ let ralphUnlocked = false;
 let sarahUnlocked = false;
 let parkerUnlocked = false;
 
-let snow = 0;
-
+// Arrays
 const commonPenguins = ["Alex", "Avery", "Caleb", "Casey", "Harper", "Lucky", "Sammy", "Taylor"];
 const uncommonPenguins = ["Blaze", "Gabe", "Leela", "Pebble", "Riley", "Thomas"];
 const rarePenguins = ["Adric", "Ralph", "Sarah"];
 const secretPenguins = ["Parker"];
 
-// Penguin check
+// Save and update function
+function updateGame() {
+  shopSnow.textContent = `Your Snow: ${snow}`;
+  saveGameState();
+  saveGameStateSnow();
+  galleryUpdate();
+}
+
+// Penguin check function
 function penguinCheck(penguin) {
   switch(penguin) {
     case "Alex":
@@ -115,7 +126,7 @@ function penguinCheck(penguin) {
   }
 }
 
-// Opening cards
+// Card functions
 function commonCard() {
   let randomIndex = Math.floor(Math.random() * commonPenguins.length);
   let penguin = commonPenguins[randomIndex];
@@ -134,7 +145,55 @@ function rareCard() {
   return`Images/Penguin_Cards/Rares/${penguin}.svg`;
 }
 
-// Session storage and UI updating
+// Gallery update function
+function galleryUpdate() {
+  alex.src = alexUnlocked ? "Images/Penguin_Cards/Commons/Alex.svg" : "Images/Penguin_Cards/Locked_Cards/Common_Locked_Card.svg";
+  avery.src = averyUnlocked ? "Images/Penguin_Cards/Commons/Avery.svg" : "Images/Penguin_Cards/Locked_Cards/Common_Locked_Card.svg";
+  caleb.src = calebUnlocked ? "Images/Penguin_Cards/Commons/Caleb.svg" : "Images/Penguin_Cards/Locked_Cards/Common_Locked_Card.svg";
+  casey.src = caseyUnlocked ? "Images/Penguin_Cards/Commons/Casey.svg" : "Images/Penguin_Cards/Locked_Cards/Common_Locked_Card.svg";
+  harper.src = harperUnlocked ? "Images/Penguin_Cards/Commons/Harper.svg" : "Images/Penguin_Cards/Locked_Cards/Common_Locked_Card.svg";
+  lucky.src = luckyUnlocked ? "Images/Penguin_Cards/Commons/Lucky.svg" : "Images/Penguin_Cards/Locked_Cards/Common_Locked_Card.svg";
+  sammy.src = sammyUnlocked ? "Images/Penguin_Cards/Commons/Sammy.svg" : "Images/Penguin_Cards/Locked_Cards/Common_Locked_Card.svg";
+  taylor.src = taylorUnlocked ? "Images/Penguin_Cards/Commons/Taylor.svg" : "Images/Penguin_Cards/Locked_Cards/Common_Locked_Card.svg";
+  blaze.src = blazeUnlocked ? "Images/Penguin_Cards/Uncommons/Blaze.svg" : "Images/Penguin_Cards/Locked_Cards/Uncommon_Locked_Card.svg";
+  gabe.src = gabeUnlocked ? "Images/Penguin_Cards/Uncommons/Gabe.svg" : "Images/Penguin_Cards/Locked_Cards/Uncommon_Locked_Card.svg";
+  leela.src = leelaUnlocked ? "Images/Penguin_Cards/Uncommons/Leela.svg" : "Images/Penguin_Cards/Locked_Cards/Uncommon_Locked_Card.svg";
+  pebble.src = pebbleUnlocked ? "Images/Penguin_Cards/Uncommons/Pebble.svg" : "Images/Penguin_Cards/Locked_Cards/Uncommon_Locked_Card.svg";
+  riley.src = rileyUnlocked ? "Images/Penguin_Cards/Uncommons/Riley.svg" : "Images/Penguin_Cards/Locked_Cards/Uncommon_Locked_Card.svg";
+  thomas.src = thomasUnlocked ? "Images/Penguin_Cards/Uncommons/Thomas.svg" : "Images/Penguin_Cards/Locked_Cards/Uncommon_Locked_Card.svg";
+  adric.src = adricUnlocked ? "Images/Penguin_Cards/Rares/Adric.svg" : "Images/Penguin_Cards/Locked_Cards/Rare_Locked_Card.svg";
+  ralph.src = ralphUnlocked ? "Images/Penguin_Cards/Rares/Ralph.svg" : "Images/Penguin_Cards/Locked_Cards/Rare_Locked_Card.svg";
+  sarah.src = sarahUnlocked ? "Images/Penguin_Cards/Rares/Sarah.svg" : "Images/Penguin_Cards/Locked_Cards/Rare_Locked_Card.svg";
+  parker.src = parkerUnlocked ? "Images/Penguin_Cards/Secrets/Parker.svg" : "Images/Penguin_Cards/Locked_Cards/Secret_Locked_Card.svg";
+}
+
+// Save game state function
+function saveGameState() {
+  const gameStatePenguins = {
+    snow: snow,
+    alexUnlocked: alexUnlocked,
+    averyUnlocked: averyUnlocked,
+    calebUnlocked: calebUnlocked,
+    caseyUnlocked: caseyUnlocked,
+    harperUnlocked: harperUnlocked,
+    luckyUnlocked: luckyUnlocked,
+    sammyUnlocked: sammyUnlocked,
+    taylorUnlocked: taylorUnlocked,
+    blazeUnlocked: blazeUnlocked,
+    gabeUnlocked: gabeUnlocked,
+    leelaUnlocked: leelaUnlocked,
+    pebbleUnlocked: pebbleUnlocked,
+    rileyUnlocked: rileyUnlocked,
+    thomasUnlocked: thomasUnlocked,
+    adricUnlocked: adricUnlocked,
+    ralphUnlocked: ralphUnlocked,
+    sarahUnlocked: sarahUnlocked,
+    parkerUnlocked: parkerUnlocked
+  };
+  sessionStorage.setItem('gameStatePenguins', JSON.stringify(gameStatePenguins));
+}
+
+// Load game state function
 function loadGameState() {
   const gameStatePenguins = JSON.parse(sessionStorage.getItem('gameStatePenguins'));
   const gameState= JSON.parse(sessionStorage.getItem('gameState'));
@@ -166,62 +225,14 @@ function loadGameState() {
   }
 }
 
-function galleryUpdate() {
-  // Snow update
-  shopSnow.textContent = `Your Snow: ${snow}`;
-  
-  alex.src = alexUnlocked ? "Images/Penguin_Cards/Commons/Alex.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
-  avery.src = averyUnlocked ? "Images/Penguin_Cards/Commons/Avery.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
-  caleb.src = calebUnlocked ? "Images/Penguin_Cards/Commons/Caleb.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
-  casey.src = caseyUnlocked ? "Images/Penguin_Cards/Commons/Casey.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
-  harper.src = harperUnlocked ? "Images/Penguin_Cards/Commons/Harper.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
-  lucky.src = luckyUnlocked ? "Images/Penguin_Cards/Commons/Lucky.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
-  sammy.src = sammyUnlocked ? "Images/Penguin_Cards/Commons/Sammy.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
-  taylor.src = taylorUnlocked ? "Images/Penguin_Cards/Commons/Taylor.svg" : "Images/Penguin_Cards/Common_Locked_Card.svg";
-  blaze.src = blazeUnlocked ? "Images/Penguin_Cards/Uncommons/Blaze.svg" : "Images/Penguin_Cards/Uncommon_Locked_Card.svg";
-  gabe.src = gabeUnlocked ? "Images/Penguin_Cards/Uncommons/Gabe.svg" : "Images/Penguin_Cards/Uncommon_Locked_Card.svg";
-  leela.src = leelaUnlocked ? "Images/Penguin_Cards/Uncommons/Leela.svg" : "Images/Penguin_Cards/Uncommon_Locked_Card.svg";
-  pebble.src = pebbleUnlocked ? "Images/Penguin_Cards/Uncommons/Pebble.svg" : "Images/Penguin_Cards/Uncommon_Locked_Card.svg";
-  riley.src = rileyUnlocked ? "Images/Penguin_Cards/Uncommons/Riley.svg" : "Images/Penguin_Cards/Uncommon_Locked_Card.svg";
-  thomas.src = thomasUnlocked ? "Images/Penguin_Cards/Uncommons/Thomas.svg" : "Images/Penguin_Cards/Uncommon_Locked_Card.svg";
-  adric.src = adricUnlocked ? "Images/Penguin_Cards/Rares/Adric.svg" : "Images/Penguin_Cards/Rare_Locked_Card.svg";
-  ralph.src = ralphUnlocked ? "Images/Penguin_Cards/Rares/Ralph.svg" : "Images/Penguin_Cards/Rare_Locked_Card.svg";
-  sarah.src = sarahUnlocked ? "Images/Penguin_Cards/Rares/Sarah.svg" : "Images/Penguin_Cards/Rare_Locked_Card.svg";
-  parker.src = parkerUnlocked ? "Images/Penguin_Cards/Secrets/Parker.svg" : "Images/Penguin_Cards/Secret_Locked_Card.svg";
-}
-
-function saveGameState() {
-  const gameStatePenguins = {
-    snow: snow,
-    alexUnlocked: alexUnlocked,
-    averyUnlocked: averyUnlocked,
-    calebUnlocked: calebUnlocked,
-    caseyUnlocked: caseyUnlocked,
-    harperUnlocked: harperUnlocked,
-    luckyUnlocked: luckyUnlocked,
-    sammyUnlocked: sammyUnlocked,
-    taylorUnlocked: taylorUnlocked,
-    blazeUnlocked: blazeUnlocked,
-    gabeUnlocked: gabeUnlocked,
-    leelaUnlocked: leelaUnlocked,
-    pebbleUnlocked: pebbleUnlocked,
-    rileyUnlocked: rileyUnlocked,
-    thomasUnlocked: thomasUnlocked,
-    adricUnlocked: adricUnlocked,
-    ralphUnlocked: ralphUnlocked,
-    sarahUnlocked: sarahUnlocked,
-    parkerUnlocked: parkerUnlocked
-  };
-  sessionStorage.setItem('gameStatePenguins', JSON.stringify(gameStatePenguins));
-}
-
+// Save snow function
 function saveGameStateSnow() {
     const gameState = JSON.parse(sessionStorage.getItem('gameState')) || {};
     gameState.snow = snow;
     sessionStorage.setItem('gameState', JSON.stringify(gameState));
 }
 
-// Pack openings
+// Opening pack functions
 function starterPackOpen() {
   if (snow >= 75) {
     snow -= 75;
@@ -243,18 +254,17 @@ function starterPackOpen() {
           imageUrl = `Images/Penguin_Cards/Uncommons/${penguin}.svg`;
         }
       }
-      
-      starterImageContainer.innerHTML += `<img src="${imageUrl}" alt="Penguin card" class="pack-penguin">`;
+      starterImageContainer.innerHTML += `<img src="${imageUrl}" alt="Penguin card" class="pack-penguin penguin-img">`;
       
       // Update unlock status based on the penguin
       penguinCheck(penguin);
     }
     
-    galleryUpdate();
+    updateGame();
     starterModal.style.display = "flex";
     setTimeout(function() {
       starterModal.style.display = "none";
-    }, 5000);
+    }, 4000);
   }
 }
 
@@ -286,18 +296,17 @@ function classicPackOpen() {
           imageUrl = `Images/Penguin_Cards/Rares/${penguin}.svg`;
         }
       }
-      
-      classicImageContainer.innerHTML += `<img src="${imageUrl}" alt="Penguin card" class="pack-penguin">`;
+      classicImageContainer.innerHTML += `<img src="${imageUrl}" alt="Penguin card" class="pack-penguin penguin-img">`;
       
       // Update unlock status based on the penguin
       penguinCheck(penguin);
     }
     
-    galleryUpdate();
+    updateGame();
     classicModal.style.display = "flex";
     setTimeout(function() {
       classicModal.style.display = "none";
-    }, 7500);
+    }, 6000);
   }
 }
 
@@ -335,26 +344,24 @@ function elitePackOpen() {
           imageUrl = `Images/Penguin_Cards/Secrets/${penguin}.svg`;
         }
       }
-      
-      eliteImageContainer.innerHTML += `<img src="${imageUrl}" alt="Penguin card" class="pack-penguin">`;
+      eliteImageContainer.innerHTML += `<img src="${imageUrl}" alt="Penguin card" class="pack-penguin penguin-img">`;
       
       // Update unlock status based on the penguin
       penguinCheck(penguin);
     }
     
-    galleryUpdate();
+    updateGame();
     eliteModal.style.display = "flex";
     setTimeout(function() {
       eliteModal.style.display = "none";
-    }, 10000);
+    }, 8000);
   }
 }
 
+// Event listeners
 starterPackEl.addEventListener('click', starterPackOpen);
 classicPackEl.addEventListener('click', classicPackOpen);
 elitePackEl.addEventListener('click', elitePackOpen);
 
 loadGameState();
 galleryUpdate();
-const saveInterval = setInterval(saveGameState, 500);
-const updateSnow = setInterval(saveGameStateSnow, 500);

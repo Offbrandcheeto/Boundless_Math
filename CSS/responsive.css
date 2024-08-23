@@ -1,33 +1,39 @@
+/* Large screens */
 @media (min-width: 1500px) {
-  .container {
+  /* Top navbar */
+  .top-navbar .logo-heading {
+    font-size: 2.75rem;
+  }
+
+  .top-navbar .nav-links .nav-link {
+    font-size: 1.85rem;
+  }
+
+  /* Game section */
+  .game-section .game-navbar .scoreboard .scoreboard-item {
+    font-size: 2.25rem;
+  }
+  
+  /* Container */
+  .game-section .container {
     height: 65%;
   }
 
-  .question {
+  .game-section .container .question {
     font-size: 3rem;
   }
 
-  .game-navbar .scoreboard li {
-    font-size: 2.25rem;
-  }
-
-  input[type="number"] {
+  .main-input {
     margin-bottom: 2.5rem;
     font-size: 2rem;
   }
 
+  /* Button */
   .btn {
     font-size: 2rem;
   }
 
-  .top-navbar .brand h2 {
-    font-size: 2.75rem;
-  }
-
-  .top-navbar .nav-links li a {
-    font-size: 1.85rem;
-  }
-
+  /* Modal */
   .modal-content {
     font-size: 1.6rem;
   }
@@ -35,35 +41,22 @@
   .close {
     font-size: 2rem;
   }
-
-  .display-penguin img {
-    width: 85%;
-  }
-
-  .card-pack {
-    width: 100%;
-  }
-
-  .pack-info {
-    padding: 2rem;
-  }
-
-  .grid-container {
-    gap: 0rem; 
-  }
 }
 
 /* Styles for screens up to 1100px wide, with a default height */
 @media (max-width: 1100px) {
-  .container {
+  /* Game section */
+  .game-section .game-navbar {
+    width: 80%;
+  }
+
+  /* Container */
+  .game-section .container {
     width: 80%;
     height: 60%;
   }
 
-  .game-navbar {
-    width: 80%;
-  }
-
+  /* Modal */
   .modal-content {
     width: 80%;
     font-size: 1.3rem;
@@ -72,130 +65,150 @@
 
 /* Styles for screens up to 1000px wide */
 @media (max-width: 1000px) {
-  .container {
+  /* Game section */
+  .game-section .game-navbar {
+    width: 90%;
+  }
+
+  /* Container */
+  .game-section .container {
     width: 90%;
     height: 60%;
-  }
-  
-  .game-navbar {
-    width: 90%;
   }
 }
 
 /* Styles for screens up to 900px wide and up to 1190px tall */
 @media (max-width: 900px) and (max-height: 1190px) {
-  .container {
+  /* Container */
+  .game-section .container {
     height: 45%;
   }
 }
 
 /* Styles for screens up to 1050px wide and up to 800px tall*/
 @media (max-width: 1050px) and (max-height: 800px) {
-  .container {
+  /* Container */
+  .game-section .container {
     height: 60%;
   }
 }
 
 /* Styles for screens up to 1190px wide and up to 830px tall*/
 @media (max-width: 1190px) and (max-height: 830px) {
-  .container {
+  /* Container */
+  .game-section .container {
     height: 60%;
   }
 }
 
 /* Styles for screens up to 1050px wide and up to 1400px tall, with a min width of 1000px*/
-@media (max-width: 1050px) and (max-height: 1400px) and (min-width: 1000px){
-  .container {
+@media (max-width: 1050px) and (max-height: 1400px) and (min-width: 1000px) {
+  /* Container */
+  .game-section .container {
     height: 60%;
   }
 }
 
 /* iPad Pro vertical*/
-@media (max-width: 1050px) and (max-height: 1400px) and (min-width: 910px) and (min-height: 1300px){
-  .container {
-    height: 40%;
-  }
-
-  .top-navbar .brand h2 {
+@media (max-width: 1050px) and (max-height: 1400px) and (min-width: 910px) and (min-height: 1300px) {
+  /* Top navbar */
+  .top-navbar .logo-heading {
     font-size: 2.5rem;
   }
 
-  .top-navbar .nav-links li a {
+  .top-navbar .nav-links .nav-link {
     font-size: 2.15rem;
   }
 
-  .shop-modal-content {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.25rem !important;
-  }
-
-  .pack-penguin {
-    width: 28vw !important;
+  /* Container */
+  .game-section .container {
+    height: 40%;
   }
 }
 
 /* iPad Pro horizontal */
-@media (max-width: 1400px) and (max-height: 1200px) and (min-width: 1300px){
-  .container {
-    height: 50%;
-  }
-
-  .top-navbar .brand h2 {
+@media (max-width: 1400px) and (max-height: 1200px) and (min-width: 1300px) {
+  /* Top navbar */
+  .top-navbar .logo-heading {
     font-size: 3rem;
   }
 
-  .top-navbar .nav-links li a {
+  .top-navbar .nav-links .nav-link {
     font-size: 2.15rem;
+  }
+
+  /* Container */
+  .game-section .container {
+    height: 50%;
   }
 }
 
+/* Bigger than iPad Mini */
 @media (max-width: 821px) {
-  .top-navbar .nav-links li a {
-    font-size: 1.55rem;
-  }
-
+  /* Top navbar */
   .top-navbar .nav-links {
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
 
-  .learn-section h2 {
-    font-size: 2.5rem;
+  .top-navbar .nav-links .nav-link{
+    font-size: 1.5rem;
   }
 
-  .display-penguin {
-    flex: 1 1 calc(50% - 1rem);
-  }
-
-  .display {
-    grid-template-columns: repeat(3, 1fr); 
-  }
-
-  .gallery-section .gallery-title {
-    font-size: 3rem;
-  }
-
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .shop-modal-content {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.1rem !important;
-  }
-
-  .pack-penguin {
-    width: 31vw !important;
-  }
-
+  /* Text section */
   .text-section {
     width: 95%;
   }
+
+  .text-section .border {
+    border: 3px var(--main-text-color) solid;
+  }
+
+  .text-section .text-heading-large {
+    font-size: 2rem;
+    border-top: 4px solid var(--main-text-color);
+    border-bottom: 4px solid var(--main-text-color);
+  }
+  
+  .text-section .text-heading-medium {
+    font-size: 1.75rem;
+  }
+
+  .text-section .text-p {
+    font-size: 1rem;
+  }
+  
+  /* Learn section */
+  .learn-section .text-heading-large {
+    font-size: 2.5rem;
+  }
+  .learn-section .text-heading-medium {
+    margin: 0.25rem auto;
+    border-top: none;
+    border-bottom: 2px solid var(--main-text-color);
+  }
 }
 
+/* Small tablet */
 @media (max-width: 768px) {
+  /* Top navbar */
+  .top-navbar {
+    padding: 0 1rem;
+  }
+
+  .top-navbar .logo-heading {
+    font-size: 2rem;
+  }
+
+  /* Container */
+  .game-section .container {
+    height: 45%;
+  }
+
+  /* Modal */
   .modal-content {
     font-size: 1rem;
     padding: 1.5rem 1rem;
+    width: 85%;
   }
 
   .close {
@@ -203,61 +216,16 @@
     font-size: 1.4rem;
   }
 
+  /* Button */
   .small-btn {
     font-size: 1.5rem;
     padding: 0.75rem 1.5rem;
   }
-
-  .border {
-    border: 3px var(--main-text-color) solid;
-  }
-
-  .text-section h2 {
-    font-size: 2rem;
-    border-top: 4px solid var(--main-text-color);
-    border-bottom: 4px solid var(--main-text-color);
-  }
-
-  .text-section h3 {
-    font-size: 1.75rem;
-  }
-
-  .learn-section h3 {
-    margin: 0.25rem auto;
-    border-top: none;
-    border-bottom: 2px solid var(--main-text-color);
-  }
-
-  .text-p {
-    font-size: 1rem;
-  }
-
-  .shop-text {
-    font-size: 1.25rem;
-  }
-
-  .contact-text {
-    font-size: 1rem;
-  }
-
-  .top-navbar .brand h2 {
-    font-size: 2rem;
-  }
-
-  .container {
-    height: 45%;
-  }
-
-  .modal-content {
-    width: 85%;
-  }
 }
 
+/* Phone */
 @media (max-width: 480px) {
-  .top-navbar .nav-links li a {
-    font-size: 1.1rem;
-  }
-
+  /* Top navbar */
   .top-navbar .logo-letter-a,
   .top-navbar .logo-letter-r,
   .top-navbar .logo-letter-k,
@@ -266,47 +234,105 @@
   .top-navbar .logo-letter-h {
     display: none;
   }
-
+  
   .top-navbar {
     padding: 0 0.75rem;
   }
-
-  .top-navbar .brand h2 {
+  
+  .top-navbar .logo-heading {
     gap: 0rem;
   }
-
+  
   .top-navbar .nav-links {
     gap: 0.5rem;
   }
 
-  .game-navbar {
+  .top-navbar .nav-links .nav-link {
+    font-size: 1.1rem;
+  }
+
+  /* Text section */
+  .text-section {
+    margin-bottom: 2rem;
+  }
+  
+  .text-section .border {
+    border: 3px var(--main-text-color) solid;
+    padding: 0.5rem;
+  }
+
+  .top-margin {
+    margin-top: 2rem;
+  }
+
+  .text-section .text-heading-large {
+    font-size: 1.5rem;
+    border-top: 3px solid var(--main-text-color);
+    border-bottom: 3px solid var(--main-text-color);
+    margin-bottom: 2rem;
+  }
+  
+  .text-section .text-heading-medium {
+    font-size: 1.5rem;
+  }
+
+  .text-section .text-p {
+    font-size: 0.75rem;
+  }
+  
+  /* Why section */
+  .why-section .text-p {
+    padding: 0.25rem;
+    text-align: justify;
+  }
+
+  /* Learn section */
+  .learn-section .text-heading-medium {
+    margin: 0.25rem auto;
+    border-top: none;
+    border-bottom: 1px solid var(--main-text-color);
+  }
+
+  /* Game section */
+  .game-section .game-navbar {
     width: 90%;
     padding: 0.5rem 0;
   }
 
-  .game-navbar .scoreboard {
+  .game-section .game-navbar .scoreboard {
     flex-direction: column;
     text-align: center;
     gap: 0rem;
   }
 
-  .game-navbar .scoreboard li {
+  .game-section .game-navbar .scoreboard .scoreboard-item {
     font-size: 1.25rem;
   }
 
-  .container {
+  .game-section .game-navbar .scoreboard .scoreboard-item .game-icon {
+    width: 25px;
+    height: auto;
+  }
+  
+  .game-section .game-navbar .scoreboard .scoreboard-item .game-heading  {
+    font-size: 1.25rem;
+  }
+
+  /* Container */
+  .game-section .container {
     padding: 2rem;
     height: 40%;
   }
 
-  .question {
+  .game-section .container .question {
     font-size: 1.6rem;
   }
 
-  input[type="number"] {
+  .main-input {
     font-size: 1.25rem;
   }
 
+  /* Buttons */
   .btn {
     padding: 0.75rem 1.5rem;
     font-size: 1.25rem;
@@ -316,135 +342,35 @@
     font-size: 1.25rem;
     padding: 0.75rem 1rem;
   }
-
-  .game-icon {
-    width: 25px;
-    height: auto;
-  }
-
-  .game-nav-heading {
-    font-size: 1.25rem;
-  }
-
-  .border {
-    border: 3px var(--main-text-color) solid;
-    padding: 0.5rem;
-  }
-
-  .text-section {
-    margin-bottom: 2rem;
-  }
-
-  .top-margin {
-    margin-top: 2rem;
-  }
-
-  .text-section h2 {
-    font-size: 1.5rem;
-    border-top: 3px solid var(--main-text-color);
-    border-bottom: 3px solid var(--main-text-color);
-    margin-bottom: 2rem;
-  }
-
-  .text-section h3 {
-    font-size: 1.5rem;
-  }
-
-  .why-section .text-p {
-    padding: 0.25rem;
-    text-align: justify;
-  }
-
-  .text-p {
-    font-size: 0.75rem;
-  }
-
-  .shop-text {
-    font-size: 1rem;
-  }
-
-  .display-penguin {
-    flex: 1 1 calc(100% - 1rem);
-    width: 100%;
-  }
-
-  .pack-info {
-    width: 90%;
-  }
-
-  .display {
-    grid-template-columns: repeat(2, 1fr); 
-  }
-
-  .card-details {
-    font-size: 1.25rem;
-  }
-
-  .card-amount {
-    font-size: 1.5rem;
-  }
-
-  .flex-container .snow-amount {
-    font-size: 1.75rem;
-  }
-
-  .gallery-section .gallery-title {
-    font-size: 2.5rem;
-    border-top: 5px solid var(--main-text-color);
-    border-bottom: 5px solid var(--main-text-color);
-    letter-spacing: 3px;
-  }
-
-  .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .shop-modal-content {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.1rem !important;
-  }
-
-  .pack-penguin {
-    width: 45vw !important;
-  }
-
-  .contact-text {
-    font-size: 0.75rem;
-  }
-
-  .learn-section h3 {
-    margin: 0.25rem auto;
-    border-top: none;
-    border-bottom: 1px solid var(--main-text-color);
-  }
 }
 
+/* Small phone */
 @media (max-width: 400px) {
-  .modal-content {
-    font-size: 0.8rem;
-  }
-
-  .question {
-    margin-bottom: 0.75rem;
-  }
-
-  .game-navbar .scoreboard li {
-    font-size: 1.1rem;
-  }
-
-  .top-navbar .nav-links li a {
-    font-size: 1rem;
-  }
-
+  /* Top navbar */
   .top-navbar {
     padding: 0 0.5rem;
   }
 
-  .pack-penguin {
-    width: 40vw !important;
+  .top-navbar .nav-links .nav-link{
+    font-size: 1rem;
   }
 
-  .container {
+  /* Game section */
+  .game-section .game-navbar .scoreboard .scoreboard-item {
+    font-size: 1.1rem;
+  }
+  
+  /* Container */
+  .game-section .container {
     height: 45%;
+  }
+
+  .game-section .container .question {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Modal */
+  .modal-content {
+    font-size: 0.8rem;
   }
 }

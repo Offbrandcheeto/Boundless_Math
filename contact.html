@@ -3,24 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="Images/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="Images/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="Images/favicon-48x48.png" sizes="48x48" type="image/png">
-    <link rel="icon" href="Images/favicon-64x64.png" sizes="64x64" type="image/png">
-    
-    <meta name="description" content="Get in touch with Parker Math! Whether you have questions, feedback, or need support, I'm here to help. Contact me to enhance your experience with my interactive math game designed for all ages. Join me in making math fun and engaging for everyone.">
-
+    <link rel="icon" href="Images/Favicons/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-48x48.png" sizes="48x48" type="image/png" />
+    <link rel="icon" href="Images/Favicons/favicon-64x64.png" sizes="64x64" type="image/png" />
     <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/form.css" />
     <link rel="stylesheet" href="CSS/responsive.css" />
-    <link rel="stylesheet" href="CSS/form.css">
+    
+    <meta name="description" content="Get in touch with Parker Math! Whether you have questions, feedback, or need support, I'm here to help. Contact me to enhance your experience with my interactive math game designed for all ages. Join me in making math fun and engaging for everyone." />
+
     <title>Parker Math | Contact</title>
   </head>
   <body>
     <!-- Top Navbar -->
     <header>
       <nav class="top-navbar">
-        <div class="brand">
-          <h2>
+        <div>
+          <h2 class="logo-heading">
             <span class="logo-letter-p">P</span>
             <span class="logo-letter-a">a</span>
             <span class="logo-letter-r">r</span>
@@ -36,11 +36,11 @@
         </div>
         <div class="nav-container">
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="saving.html">Save</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="why.html">Why?</a></li>
-            <li><a href="learn.html">Learn</a></li>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="shop.html" class="nav-link">Shop</a></li>
+            <li><a href="save.html" class="nav-link">Save</a></li>
+            <li><a href="why.html" class="nav-link">Why?</a></li>
+            <li><a href="learn.html" class="nav-link">Learn</a></li>
           </ul>
         </div>
       </nav>
@@ -49,14 +49,19 @@
     <!-- Contact Section -->
     <section class="contact-section">
       <div class="form-container">
-        <form name="contact" method="POST" data-netlify="true">
+        <form name="contact" method="POST" data-netlify="true" class="contact-form">
           <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-input" name="name" id="name" autocomplete="name"/>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" class="form-input" name="name" autocomplete="name" />
           </div>
           <div class="form-group">
-            <label for="message">Message</label>
-            <textarea name="message" placeholder="Feel free to contact me if you encounter any errors or bugs or have suggestions for future updates. I truly value your input and am committed to making this game the best it can be based on your feedback. (This message will disappear once you start typing)" class="form-input" id="message"></textarea>
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              name="message"
+              placeholder="Feel free to contact me if you encounter any errors or bugs or have suggestions for future updates. I truly value your input and am committed to making this game the best it can be based on your feedback. (This message will disappear once you start typing)"
+              id="message"
+              class="form-input form-textarea"
+            ></textarea>
           </div>
           <button class="small-btn" type="submit">Send</button>
         </form>
