@@ -14,9 +14,9 @@ const addMsg = "How much Snow would you like to add? (ONLY WHOLE NUMBERS)";
 const takeMsg = "How much Snow would you like to take? (ONLY WHOLE NUMBERS)";
 
 // Let variables
-let savedSnow = 0;
-let correctSavingsAccount;
-let snow;
+let savedSnow = 0; 
+let correctSavingsAccount = 0; 
+let snow = 0; 
 let interestEarned = 0;
 
 // Update UI values function
@@ -42,6 +42,11 @@ function saveTransaction(transaction) {
 	if (!Number.isInteger(userInput)) {
 		alert("Please enter a whole number.");
 		return; 
+	}
+
+	if (userInput < 1) {
+		alert("Please enter a number greater than 0.");
+		return;
 	}
 
 	if (transaction === "add") {
@@ -85,39 +90,35 @@ span.onclick = function() {
 
 // Load game state function
 function loadGameState() {
-  const gameState= JSON.parse(sessionStorage.getItem("gameState"));
-	const savedSnowState = JSON.parse(sessionStorage.getItem("savedSnowState"));
-
-  if (gameState) {
-    snow = gameState.snow || 0;
-		correctSavingsAccount = gameState.correctSavingsAccount || 0;
-  }
-
-	if (savedSnowState) {
-		savedSnow = savedSnowState.savedSnow || 0;
-		interestEarned = savedSnowState.interestEarned || 0;
-	}
-
+	const gameState = JSON.parse(localStorage.getItem("gameState")) || {};
+	const savedSnowState = JSON.parse(localStorage.getItem("savedSnowState")) || {};
+  
+	snow = gameState.snow || 0;
+	correctSavingsAccount = gameState.correctSavingsAccount || 0;
+  
+	savedSnow = savedSnowState.savedSnow || 0;
+	interestEarned = savedSnowState.interestEarned || 0;
+  
 	if (correctSavingsAccount > 0 && savedSnow > 0) {
-		savedSnow = compoundInterest(savedSnow, correctSavingsAccount);
-		saveGameState();
+	  savedSnow = compoundInterest(savedSnow, correctSavingsAccount);
+	  saveGameState();
 	}
-
-  updateValues();
-}
+  
+	updateValues();
+  }
 
 // Save game state function
 function saveGameState() {
-	const gameState = JSON.parse(sessionStorage.getItem("gameState")) || {};
+	const gameState = JSON.parse(localStorage.getItem("gameState")) || {};
 	gameState.snow = snow;
 	gameState.correctSavingsAccount = 0;
-	sessionStorage.setItem("gameState", JSON.stringify(gameState));
+	localStorage.setItem("gameState", JSON.stringify(gameState));
 
 	const savedSnowState = {
     savedSnow: savedSnow,
 	  interestEarned: interestEarned
   };
-  sessionStorage.setItem("savedSnowState", JSON.stringify(savedSnowState));
+  localStorage.setItem("savedSnowState", JSON.stringify(savedSnowState));
 }
 
 // Event listeners

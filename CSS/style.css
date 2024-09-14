@@ -4,7 +4,9 @@
 /* Variables */
 :root {
   --main-text-color: #333;
-  --main-blue-color: #007bff; 
+  --main-blue-color: #0061e0; 
+  --background-color: #effbff;
+  --white: #fff;
   --animation-speed: 0.7s;
   --normal: 400;
   --semi-bold: 550;
@@ -21,7 +23,8 @@
 /* Body and background styles */
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(45deg, #f0f9ff 0%, #d0eaff 30%, #b8dfff 50%, #e0f3fc 70%, #f0f9ff 100%);
+  /* background: linear-gradient(45deg, #f0f9ff 0%, #d0eaff 30%, #b8dfff 50%, #e0f3fc 70%, #f0f9ff 100%); */
+  background-color: var(--background-color);
   color: var(--main-text-color);
   display: flex;
   flex-direction: column;
@@ -35,7 +38,7 @@ body {
 }
 
 .white-background {
-  background: linear-gradient(45deg, #fff 0%, #f2f2f2 70%, #fff 100%);
+  background: linear-gradient(45deg, var(--white) 0%, #f2f2f2 70%, var(--white) 100%);
 }
 
 /* Top navbar */
@@ -56,7 +59,7 @@ body {
 
 .top-navbar .logo-heading {
   font-size: 2.2rem;
-  font-weight: var(--normal);
+  font-weight: var(--semi-bold);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,7 +136,7 @@ body {
 }
 
 .top-navbar .nav-links .nav-link{
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   font-size: 1.65rem;
   font-weight: var(--semi-bold);
@@ -153,6 +156,7 @@ body {
   width: 100%;
   height: 92vh;
   padding-bottom: 2rem;
+  position: relative;
 }
 
 .game-section .game-navbar {
@@ -170,7 +174,7 @@ body {
 .game-section .game-navbar .scoreboard {
   display: flex;
   list-style: none;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .game-section .game-navbar .scoreboard .scoreboard-item {
@@ -178,8 +182,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  color: #fff;
-  font-size: 1.75rem;
+  color: var(--white);
+  font-size: 1.6rem;
   font-weight: var(--semi-bold);
   letter-spacing: 0.075rem;
 }
@@ -190,8 +194,62 @@ body {
 }
 
 .game-section .game-navbar .scoreboard .scoreboard-item .game-heading {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: var(--semi-bold);
+}
+
+/* Confetti */
+.game-section .confetti-container {
+  display: none; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Confetti */
+.game-section .confetti-container .confetti {
+  position: absolute;
+  width: 25vw; 
+  height: 25vw; 
+}
+
+.game-section .confetti-container #left-confetti {
+  top: 10%; 
+  left: 20%;
+  animation: pop-left 0.7s ease-out forwards;
+}
+
+.game-section .confetti-container #right-confetti {
+  top: 10%; 
+  right: 20%;
+  animation: pop-right 0.7s ease-out forwards;
+}
+
+/* Confetti Animation */
+@keyframes pop-left {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-200px) translateY(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes pop-right {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200px) translateY(-100px);
+    opacity: 0;
+  }
 }
 
 /* Pop animation */
@@ -225,7 +283,7 @@ body {
   padding: 3.5rem 4rem;
   width: 60%;
   height: 70%;
-  background: #fff;
+  background: var(--white);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -266,7 +324,7 @@ body {
   border: 2px solid #aaa;
   font-size: 1.8rem;
   border-radius: 10px;
-  background: #fff;
+  background: var(--white);
   transition: border-color ease 0.5s, box-shadow 0.5s ease;
 }
 
@@ -356,7 +414,7 @@ input::-webkit-inner-spin-button {
 }
 
 .modal .modal-content {
-  background-color: #fff;
+  background-color: var(--white);
   padding: 2.25rem 1.5rem;
   width: 50%;
   line-height: 1.4;
@@ -405,7 +463,7 @@ input::-webkit-inner-spin-button {
 .btn {
   font-family: "Poppins", sans-serif;
   background-color: var(--main-blue-color);
-  color: #fff;
+  color: var(--white);
   padding: 1rem 2rem;
   border: none;
   width: 100%;
@@ -420,8 +478,8 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
   outline: none;
   border: none;
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--main-blue-color);
+  color: var(--white);
   padding: 0.75rem 2rem;
   border-radius: 0.5rem;
   font-size: 1.65rem;
@@ -430,5 +488,5 @@ input::-webkit-inner-spin-button {
 }
 
 .small-btn:hover {
-  opacity: 0.85;
+  opacity: 0.9;
 }

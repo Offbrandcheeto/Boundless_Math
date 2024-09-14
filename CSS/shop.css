@@ -32,7 +32,7 @@
 }
 
 .text-section .grid-container .grid-item .pack-info {
-  background-color: #fff;
+  background-color: var(--white);
   color: var(--main-text-color);
   border-radius: 10px;
   margin-top: 1rem;
@@ -50,7 +50,7 @@
 }
 
 .text-section .grid-container .grid-item .pack-info .card-pack:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .text-section .grid-container .grid-item .pack-info .snow-amount {
@@ -119,7 +119,16 @@
 .pack-penguin {
   width: 20vw;
   height: auto;
+  opacity: 0;
+  transform: scale(0.8) rotateY(90deg);  /* Start rotated */
+  transition: opacity 0.5s ease, transform 0.5s ease;  /* Rotate with the transition */
 }
+
+.show-card {
+  opacity: 1;
+  transform: scale(1) rotateY(0deg);  /* Rotate back to normal */
+}
+
 
 /* Sizing modals */
 #starter-modal .shop-modal-content {

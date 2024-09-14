@@ -49,7 +49,7 @@
     <section class="game-section">
       <div class="game-navbar">
         <ul class="scoreboard">
-          <li id="progress" class="scoreboard-item"></li>
+          <li id="tier" class="scoreboard-item tier-heading"></li>
           <li class="scoreboard-item">
             <img src="Images/Icons/Snowflake.svg" alt="Snowflake" class="game-icon" />
             <h2 id="snow" class="game-heading"></h2>
@@ -70,6 +70,12 @@
           <input type="number" id="answer" class="main-input" />
         </form>
         <button id="main-btn" class="btn">Check Answer</button>
+      </div>
+
+      <!-- Confetti Images -->
+      <div id="confetti-container" class="confetti-container">
+        <img src="Images/Icons/Confetti_Left.svg" id="left-confetti" class="confetti" alt="Left Confetti">
+        <img src="Images/Icons/Confetti_Right.svg" id="right-confetti" class="confetti" alt="Right Confetti">
       </div>
     </section>
 

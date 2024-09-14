@@ -28,6 +28,16 @@
     font-size: 2rem;
   }
 
+  /* Scoreboard */
+  .game-section .game-navbar .scoreboard .scoreboard-item .game-icon {
+    width: 50px;
+    height: auto;
+  }
+
+  .game-section .game-navbar .scoreboard .scoreboard-item .game-heading {
+    font-size: 1.90rem;
+  }
+
   /* Button */
   .btn {
     font-size: 2rem;
@@ -60,6 +70,19 @@
   .modal-content {
     width: 80%;
     font-size: 1.3rem;
+  }
+
+  /* Confetti */
+  .game-section .confetti-container #left-confetti {
+    top: 40%; 
+    left: 20%;
+    animation: pop-left 0.7s ease-out forwards;
+  }
+  
+  .game-section .confetti-container #right-confetti {
+    top: 40%; 
+    right: 20%;
+    animation: pop-right 0.7s ease-out forwards;
   }
 }
 
@@ -112,12 +135,16 @@
 /* iPad Pro vertical*/
 @media (max-width: 1050px) and (max-height: 1400px) and (min-width: 910px) and (min-height: 1300px) {
   /* Top navbar */
+  .top-navbar .nav-links {
+    gap: 0.7rem;
+  }
+
   .top-navbar .logo-heading {
     font-size: 2.5rem;
   }
 
   .top-navbar .nav-links .nav-link {
-    font-size: 2.15rem;
+    font-size: 1.85rem;
   }
 
   /* Container */

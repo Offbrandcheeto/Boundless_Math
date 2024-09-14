@@ -5,12 +5,13 @@ document.addEventListener("DOMContentLoaded", function() {
   const answerEl = document.getElementById("answer");
   const incorrectEl = document.getElementById("incorrect");
   const correctEl = document.getElementById("correct");
-  const progressEl = document.getElementById("progress");
+  const tierEl = document.getElementById("tier");
   const snowEl = document.getElementById("snow");
   const modal = document.getElementById("my-modal");
   const modalText = document.getElementById("modal-text")
   const span = document.getElementsByClassName("close")[0];
-  const SCORE_LEVEL_UP = 60;
+
+  const SCORE_LEVEL_UP = 50;
 
   // Arrays
   const positiveMessages = [
@@ -49,22 +50,22 @@ document.addEventListener("DOMContentLoaded", function() {
     "Believe in yourself!"
   ];
 
+  const operations = ["Addition", "Subtraction", "Multiplication", "Division"];
+
   // Prompts
-  const welcomePrompt = `Parker Math is a dynamic math operations game that automatically adjusts to your skill level as you play. The questions will adapt to your performance—correct answers will bring more challenging problems, while incorrect ones will make the problems easier. Your journey begins with addition and advances through subtraction, multiplication, and, finally division. The game is designed not to save your progress, allowing you to revisit concepts and reinforce your learning. Along the way, you'll also earn "Snow" for correct answers, which you can use to open up packs of collectible penguin cards in the shop. Try to collect them all, and good luck on your journey!`;
+  const welcomePrompt = `Parker Math is a dynamic math operations game that automatically adjusts to your skill level as you play. The difficulty of the questions will change based on your performance. Correct answers will result in more challenging problems, while incorrect answers will lead to easier problems. Your journey begins with addition and advances through subtraction, multiplication, and, finally division. Once you complete division, the game returns to addition and starts the cycle over again. However, the problems will be more challenging than they were in the previous cycle. But don't doubt yourself. You can do this, and you'll be amazed at where you end up if you practice a little each day!`;
+
+  const welcomePromptTwo = `Congratulations on answering your first question and beginning your journey! I'd like to introduce you to two important parts of the game: the Shop and Save sections. In the Shop section, you can buy packs of cards containing different penguins you can collect. You purchase the packs using the Snow you collect when you answer a question correctly. You can also use your Snow in the Save section, where you can put some or all of it into a savings account. Doing this helps you build Snow quickly, so it's highly recommended that you do it.`
 
   const fiveIncorrectPrompt = "It looks like you have gotten five problems incorrect in a row. First of all, good job. You are currently pushing yourself, and you keep showing up even in the face of difficulty. The game should go back to some more manageable problems for you to practice, but take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Don't be afraid to ask questions or seek out help. This is how you learn, and you're doing a great job. Keep it up.";
 
-  const tenIncorrectPrompt = "It looks like you have gotten ten problems incorrect in a row. First of all, outstanding job. You are really pushing yourself, and you keep showing up even in the face of tremendous difficulty. Be sure to take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Review the concepts and do a little bit of practice on your own. Once you've done this, return to your open tab and continue playing. Remember you learn far more when you lose than when you win, so if you see others around you getting problems correct, don't get upset. Odds are that you are learning more than they are, and they should be envious of you. Keep going. I believe in you and have confidence in yourself."
-
-  const endPrompt = "Congratulations! You've completed an entire game of Parker Math, and this is an accomplishment you should be most proud of. No matter what your skill level was, you had to work hard and struggle along the way to get to this point. To those who didn't get many questions incorrect, I congratulate you, and I'm blessed you've taken the time to play this game. To those who struggled and failed repeatedly to complete the game, I want to give you special congratulations. You learned the most, which should make the people around you jealous, and you should be overjoyed with yourself. You kept getting knocked down and got up with a smile. You showed a growth mindset and welcomed the failure you faced. Great job, and I hope to see you here again soon.";
-
-  displayModal(welcomePrompt);
+  const tenIncorrectPrompt = "It looks like you have gotten ten problems incorrect in a row. First of all, outstanding job. You are really pushing yourself, and you keep showing up even in the face of tremendous difficulty. Be sure to take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Review the concepts and do a little bit of practice on your own. Once you've done this, return to your open tab and continue playing. Remember you learn far more when you lose than when you win, so if you see others around you getting problems correct, don't get upset. Odds are that you are learning more than they are, and they should be envious of you. Keep going. I believe in you and have confidence in yourself.";
 
   // Let variables
-  let operations = ["addition", "subtraction", "multiplication", "division"];
-  let levelUpPrompts = [false, false, false];
+  let levelUpPrompts = [false, false, false, false];
   let operationIndex = 0;
   let difficultyLevel = 1;
+  let phase = 1;
   let score = 0;
   let snow = 0;
   let correct = 0;
@@ -72,10 +73,10 @@ document.addEventListener("DOMContentLoaded", function() {
   let correctSavingsAccount = 0;
   let incorrect = 0;
   let incorrectStreak = 0;
-  let progress = 0;
   let currentQuestion = null;
   let correctAnswer = null;
   let shownPrompt = false;
+  let shownPromptTwo = false;
 
   // Feedback function
   function displayFeedback(text, color, question, answer) {
@@ -84,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (color !== "#f44335") {
       setTimeout(function() {
         mainBtn.textContent = "Check Answer";
-        mainBtn.style.backgroundColor = "#007bff";
+        mainBtn.style.backgroundColor = "#0061e0";
       }, 2500);
     } else {
       setTimeout(function() {
@@ -96,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }, 5000);
       setTimeout(function() {
         mainBtn.textContent = "Check Answer";
-        mainBtn.style.backgroundColor = "#007bff";
+        mainBtn.style.backgroundColor = "#0061e0";
       }, 8000);
     }
   }
@@ -133,28 +134,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Generate question function
   function generateQuestion(operation, difficultyLevel) {
-    if (operation === "addition") {
-      const n1 = Math.floor(Math.random() * (10 * difficultyLevel) + 1);
-      const n2 = Math.floor(Math.random() * (10 * difficultyLevel) + 1);
+    if (operation === "Addition") {
+      const n1 = Math.floor(Math.random() * (5 * difficultyLevel) + 1);
+      const n2 = Math.floor(Math.random() * (5 * difficultyLevel) + 1);
       const answer = n1 + n2;
       const question = `${n1} + ${n2} = `;
       return [question, answer];
-    } else if (operation === "subtraction") {
-      let n1 = Math.floor(Math.random() * (20 * difficultyLevel) + 1);
-      let n2 = Math.floor(Math.random() * (20 * difficultyLevel) + 1);
+    } else if (operation === "Subtraction") {
+      let n1 = Math.floor(Math.random() * (10 * difficultyLevel) + 1);
+      let n2 = Math.floor(Math.random() * (10 * difficultyLevel) + 1);
       [n1, n2] = [Math.max(n1, n2), Math.min(n1, n2)];
       const answer = n1 - n2;
       const question = `${n1} - ${n2} = `;
       return [question, answer];
-    } else if (operation === "multiplication") {
-      const n1 = Math.floor(Math.random() * (5 * difficultyLevel) + 1);
-      const n2 = Math.floor(Math.random() * (5 * difficultyLevel) + 1);
+    } else if (operation === "Multiplication") {
+      const n1 = Math.floor(Math.random() * (3 * difficultyLevel) + 1);
+      const n2 = Math.floor(Math.random() * (3 * difficultyLevel) + 1);
       const answer = n1 * n2;
       const question = `${n1} x ${n2} = `;
       return [question, answer];
-    } else if (operation === "division") {
-      const n2 = Math.floor(Math.random() * (5 * difficultyLevel) + 1);
-      const answer = Math.floor(Math.random() * (5 * difficultyLevel) + 1);
+    } else if (operation === "Division") {
+      const n2 = Math.floor(Math.random() * (3 * difficultyLevel) + 1);
+      const answer = Math.floor(Math.random() * (3 * difficultyLevel) + 1);
       const n1 = n2 * answer;
       const question = `${n1} / ${n2} = `;
       return [question, answer];
@@ -163,33 +164,24 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Start game function
   function startGame() {
-    if (operationIndex < operations.length) {
-      if (shownPrompt === false) {
-        modal.style.display = "flex";
-        shownPrompt = true;
-      } else if (levelUpPrompts[operationIndex - 1] === false) {
-        let levelUpPrompt = `Congratulations! You've shown mastery in ${operations[operationIndex - 1]}, and you should be incredibly proud of your accomplishment. Your dedication and determination have paid off. Now, take a moment to reflect on your journey so far. Consider the problems you struggled with, and then think about the moments when you successfully solved a problem. Did you learn anything from those moments of success? Most likely not, because you already knew the answer. Your previous mistakes and failures led you to be able to answer a problem correctly. As you continue forward, keep in mind that it's through failure that you learn, and success simply confirms that you've learned something.`;
-        levelUpPrompts[operationIndex - 1] = true;
-        displayModal(levelUpPrompt);
-      } else {
-        modal.style.display = "none";
-      }
-      nextQuestion();
-    } else {
-      questionEl.textContent = "You have completed all operations! Excellent work!";
-      mainBtn.style.display = "none";
-      answerEl.style.display = "none";
-      displayModal(endPrompt);
-
-      // Stop saving game state when game ends
-      // clearInterval(saveInterval); 
+    if (shownPrompt === false) {
+      displayModal(welcomePrompt);
+      shownPrompt = true;
     }
+
+    if (operationIndex === operations.length) {
+      operationIndex = 0;
+      phase += 1;
+      levelUpPrompts = [false, false, false, false];
+      difficultyLevel = (phase - 1) * 5 + 1;
+    } 
+    nextQuestion();
   }
   
   // Next question function
   function nextQuestion() {
-    const savedQuestion = sessionStorage.getItem("currentQuestion");
-    const savedAnswer = sessionStorage.getItem("correctAnswer");
+    const savedQuestion = localStorage.getItem("currentQuestion");
+    const savedAnswer = localStorage.getItem("correctAnswer");
     if (savedQuestion && savedAnswer) {
       currentQuestion = savedQuestion;
       correctAnswer = parseFloat(savedAnswer);
@@ -218,12 +210,23 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  // Confetti function
+  function showConfetti() {
+    const confettiContainer = document.getElementById('confetti-container');
+    confettiContainer.style.display = 'block';
+  
+    setTimeout(() => {
+      confettiContainer.style.display = 'none';
+    }, 700); // Duration should match the animation duration
+  }
+
   // Check answer function
   function checkAnswer() {
     if (mainBtn.textContent === "Check Answer") {
       const userAnswer = parseFloat(answerEl.value);
       if (!isNaN(userAnswer)) {
         if (userAnswer === correctAnswer) {
+          showConfetti();
           score++;
           correct++;
           correctSavingsAccount++;
@@ -238,9 +241,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const randomMessage = positiveMessages[Math.floor(Math.random() * positiveMessages.length)];
             displayFeedback(`Correct. ${randomMessage}`, "#4caf50");
           }
-          if (score % 12 === 0) {
+          if (score % 10 === 0) {
             difficultyLevel++;
           }
+          
         } else {
           if (score > 0) {
             score--;
@@ -249,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
           prevQuestion = currentQuestion;
           prevAnswer = correctAnswer;
           displayFeedback("Incorrect.", "#f44335", prevQuestion, prevAnswer); 
-          if (score >= 0 && score % 12 === 11) {
+          if (score >= 0 && score % 10 === 9) {
             difficultyLevel--;
           }
         }
@@ -263,14 +267,20 @@ document.addEventListener("DOMContentLoaded", function() {
           difficultyLevel--;
         }
       }
-      // Clear the session storage
-      sessionStorage.removeItem("currentQuestion");
-      sessionStorage.removeItem("correctAnswer");
-    
+
+      // Clear the local storage question and answer
+      localStorage.removeItem("currentQuestion");
+      localStorage.removeItem("correctAnswer");
+
       // Check if score reaches the level up threshold
       if (score >= SCORE_LEVEL_UP) {
+        if (levelUpPrompts[operationIndex] === false) {
+          let levelUpPrompt = `Congratulations! You've shown mastery in ${operations[operationIndex]} Phase ${phase}, and you should be incredibly proud of your accomplishment. Your dedication and determination have paid off. Now, take a moment to reflect on your journey so far. Consider the problems you struggled with, and then think about the moments when you successfully solved a problem. Did you learn anything from those moments of success? Most likely not, because you already knew the answer. Your previous mistakes and failures led you to be able to answer a problem correctly. As you continue forward, keep in mind that it's through failure that you learn, and success simply confirms that you've learned something.`;
+          levelUpPrompts[operationIndex] = true;
+          displayModal(levelUpPrompt);
+        }
         operationIndex++;
-        difficultyLevel = 1;
+        difficultyLevel = (phase - 1) * 5 + 1;
         score = 0;
         startGame();
       } else {
@@ -279,75 +289,78 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       return;
     }
-    updateScoreUI();
-  }
-  
-  
-  // Function to save game state to sessionStorage
-  function saveGameState() {
-    sessionStorage.setItem("gameState", JSON.stringify({
-      operationIndex: operationIndex,
-      difficultyLevel: difficultyLevel,
-      score: score,
-      correct: correct,
-      correctSavingsAccount: correctSavingsAccount,
-      incorrect: incorrect,
-      progress: progress,
-      shownPrompt: shownPrompt,
-      correctStreak: correctStreak,
-      incorrectStreak: incorrectStreak,
-      levelUpPrompts: levelUpPrompts,
-      snow: snow,
-    }));
-    sessionStorage.setItem("currentQuestion", currentQuestion);
-    sessionStorage.setItem("correctAnswer", correctAnswer);
-  }
-  
-  // Function to load game state from sessionStorage
-  function loadGameState() {
-    const gameState = JSON.parse(sessionStorage.getItem("gameState"));
-    if (gameState) {
-      operationIndex = gameState.operationIndex;
-      difficultyLevel = gameState.difficultyLevel;
-      score = gameState.score;
-      correct = gameState.correct;
-      correctSavingsAccount = gameState.correctSavingsAccount;
-      incorrect = gameState.incorrect;
-      progress = gameState.progress;
-      shownPrompt = gameState.shownPrompt;
-      correctStreak = gameState.correctStreak;
-      incorrectStreak = gameState.incorrectStreak;
-      levelUpPrompts = gameState.levelUpPrompts;
-      snow = gameState.snow;
+    if (shownPromptTwo === false) {
+      displayModal(welcomePromptTwo);
+      shownPromptTwo = true;
     }
-    
-    const savedQuestion = sessionStorage.getItem("currentQuestion");
-    const savedAnswer = sessionStorage.getItem("correctAnswer");
+    updateScoreUI();
+    saveGameState();
+  }
+  
+  
+  // Function to save game state to localStorage
+  function saveGameState() {
+    const state = {
+      operationIndex,
+      difficultyLevel,
+      score,
+      snow,
+      correct,
+      correctStreak,
+      correctSavingsAccount,
+      incorrect,
+      incorrectStreak,
+      currentQuestion,
+      correctAnswer,
+      shownPrompt,
+      shownPromptTwo
+    };
+
+    localStorage.setItem("gameState", JSON.stringify(state));
+    localStorage.setItem("currentQuestion", currentQuestion);
+    localStorage.setItem("correctAnswer", correctAnswer);
+  }
+  
+  // Function to load game state from localStorage
+  function loadGameState() {
+    const savedState = localStorage.getItem("gameState");
+
+    if (savedState) {
+      const state = JSON.parse(savedState);
+      operationIndex = state.operationIndex || 0;
+      difficultyLevel = state.difficultyLevel || 1;
+      score = state.score || 0;
+      snow = state.snow || 0;
+      correct = state.correct || 0;
+      correctStreak = state.correctStreak || 0;
+      incorrect = state.incorrect || 0;
+      incorrectStreak = state.incorrectStreak || 0;
+      correctAnswer = state.correctAnswer || null;
+      shownPrompt = state.shownPrompt || false;
+      shownPromptTwo = state.shownPromptTwo || false;
+    }
+
+    const savedQuestion = localStorage.getItem("currentQuestion");
+    const savedAnswer = localStorage.getItem("correctAnswer");
+
     if (savedQuestion && savedAnswer) {
       currentQuestion = savedQuestion;
       correctAnswer = parseFloat(savedAnswer);
       questionEl.textContent = currentQuestion;
       answerEl.value = '';
     }
-
-    correctEl.textContent = `:${correct}`;
-    incorrectEl.textContent = `Incorrect: ${incorrect}`;
-    progressEl.textContent = `Progress: ${progress}%`;
-    snowEl.textContent = snow;
   }
   
-  // Load game state from sessionStorage at the beginning
+  // Load game state from localStorage at the beginning
   loadGameState();
   
-  // Save game state to sessionStorage every 500 milliseconds
+  // Save game state to localStorage every 500 milliseconds
   function updateScoreUI() {
     correctEl.textContent = correct;
     incorrectEl.textContent = incorrect;
-    progress = Math.floor(((score / 240) + (operationIndex * .25)) * 100);
-    progressEl.textContent = `Progress: ${progress}%`;
+    tierEl.textContent = `Tier: ${operations[operationIndex]} ${difficultyLevel}`;
     snowEl.textContent = snow;
   }
-  const saveInterval = setInterval(saveGameState, 500);
   
   // Event listeners
   mainBtn.addEventListener("click", checkAnswer);
@@ -361,4 +374,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
   startGame();
   updateScoreUI();
+  saveGameState();
 });
