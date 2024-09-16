@@ -58,74 +58,17 @@ body {
 }
 
 .top-navbar .logo-heading {
-  font-size: 2.2rem;
-  font-weight: var(--semi-bold);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.125rem;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Logo text colors and transitions */
-.top-navbar .logo-heading .logo-letter-p {
-  color: #00ff7f;
-  transform: rotate(3deg);
-  transition: transform var(--animation-speed) ease;
+.top-navbar .logo-heading .logo-image {
+  transition: transform 5s ease;
 }
 
-.top-navbar .logo-heading .logo-letter-a {
-  color: #6affff;
-  transform: rotate(-2deg);
-  transition: transform var(--animation-speed)  ease-in-out;
-}
-
-.top-navbar .logo-heading .logo-letter-r {
-  color: #e4e607;
-  transform: rotate(3deg);
-  transition: transform var(--animation-speed)  ease-in-out;
-}
-
-.top-navbar .logo-heading .logo-letter-k {
-  color: #ffa7a7;
-  transform: rotate(-3deg);
-  transition: transform var(--animation-speed)  ease-in-out;
-}
-
-.top-navbar .logo-heading .logo-letter-e {
-  color: #5dfe63;
-  transform: rotate(4deg);
-  transition: transform var(--animation-speed)  ease-in-out;
-}
-
-.top-navbar .logo-heading .logo-letter-m {
-  color: #fffe00;
-  transform: rotate(-4deg);
-  transition: transform var(--animation-speed)  ease-in-out;
-}
-
-.top-navbar .logo-heading .logo-letter-t {
-  color: #00ff00;
-  transform: rotate(2deg);
-  transition: transform var(--animation-speed)  ease-in-out;
-}
-
-.top-navbar .logo-heading .logo-letter-h {
-  color: #edb3ff;
-  transform: rotate(-5deg);
-  transition: transform var(--animation-speed)  ease-in-out;
-}
-
-/* Hover effects */
-.top-navbar .logo-heading .logo-letter-p:hover,
-.top-navbar .logo-heading .logo-letter-a:hover,
-.top-navbar .logo-heading .logo-letter-r:hover,
-.top-navbar .logo-heading .logo-letter-k:hover,
-.top-navbar .logo-heading .logo-letter-e:hover,
-.top-navbar .logo-heading .logo-letter-m:hover,
-.top-navbar .logo-heading .logo-letter-t:hover,
-.top-navbar .logo-heading .logo-letter-h:hover {
-  transform: rotate(360deg) scale(1.2);
+.top-navbar .logo-heading .logo-image:hover {
+  transform: rotate(10800deg);
 }
 
 /* Top navbar links */
