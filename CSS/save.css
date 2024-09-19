@@ -38,6 +38,8 @@
   justify-content: baseline;
   width: 100%;
   border: 4px solid var(--main-text-color);
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .text-section .saving-account .saving-account-item {
@@ -71,7 +73,6 @@
 
 .text-section .save-container .save-item .saving-info .interest-heading {
   color: #4caf50;
-  font-style: italic;
   margin-bottom: 1.5rem;
 }
 

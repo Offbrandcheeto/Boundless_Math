@@ -67,7 +67,16 @@
   resize: none;
 }
 
-/* Responsive adjustments */
+/* Responsive */
+@media (min-width: 1500px) {
+  .contact-section .form-container {
+    padding: 4rem 3rem;
+  }
+
+  .contact-section .form-container .contact-form .form-group .form-input {
+    font-size: 1.15rem;
+  }
+}
 @media (max-width: 768px) {
   .contact-section .form-container  {
     width: 90%;

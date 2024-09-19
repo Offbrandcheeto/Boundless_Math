@@ -40,8 +40,10 @@
   }
 
   /* Modal */
-  .modal-content {
+  .modal .modal-content {
     font-size: 1.6rem;
+    line-height: 1.6;
+    padding: 3rem 2.25rem;
   }
 
   .close {
@@ -63,7 +65,7 @@
   }
 
   /* Modal */
-  .modal-content {
+  .modal .modal-content {
     width: 80%;
     font-size: 1.3rem;
   }
@@ -206,7 +208,7 @@
   }
 
   /* Modal */
-  .modal-content {
+  .modal .modal-content {
     font-size: 1rem;
     padding: 1.5rem 1rem;
     width: 85%;
@@ -362,7 +364,8 @@
   }
 
   /* Modal */
-  .modal-content {
+  .modal .modal-content {
+    width: 90%;
     font-size: 0.8rem;
   }
 }

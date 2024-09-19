@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const operations = ["Addition", "Subtraction", "Multiplication", "Division"];
 
   // Prompts
-  const welcomePrompt = `Boundless Math is an infinite math operations game that automatically adjusts to your skill level as you play. The difficulty adjusts to your performance—correct answers bring tougher problems, while incorrect ones make the problems easier. Your journey begins with addition and advances through subtraction, multiplication, and, finally division. Once you complete division, the game returns to addition and starts the cycle over again. However, the problems will be more challenging than they were in the previous cycle. Each cycle pushes you further, building your skills step by step. It'll be a challenge, but as you keep putting in the work and showing up, you'll discover that your potential is truly boundless!`;
+  const welcomePrompt = `Boundless Math is an infinite math operations game that automatically adjusts to your skill level as you play. Correct answers will bring tougher problems, while incorrect ones will make the problems easier. Your journey begins with addition and advances through subtraction, multiplication, and, finally division. Once you complete division, the game returns to addition and starts the cycle over again. However, the problems will be more challenging than they were the previous time around. Each cycle will push you further, gradually building your skills and talents. It'll be a challenge, but as you keep putting in the work and showing up, you'll discover that your potential is truly boundless!`; 
 
   const welcomePromptTwo = `Congratulations on answering your first question and beginning your journey! You took the first step, which is always the hardest one, and I'd like to introduce you to two important parts of the game: the Shop and Save sections. In the Shop section, you can buy packs of cards containing different penguins you can collect. You purchase the packs using the Snow you collect when you answer a question correctly. You can also use your Snow in the Save section, where you can put some or all of it into a savings account. Doing this helps you build Snow quickly, so it's highly recommended that you do it.`
 
@@ -100,21 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
         mainBtn.style.backgroundColor = "#0061e0";
       }, 8000);
     }
-  }
-
-  // Pop effect function
-  function triggerPopEffect(isCorrect) {
-    // Determine the correct element
-    const elementId = isCorrect ? 'correct' : 'incorrect';
-    const element = document.getElementById(elementId);
-  
-    // Add the pop-effect class
-    element.classList.add('pop-effect');
-  
-    // Remove the pop-effect class after the animation completes
-    element.addEventListener('animationend', () => {
-      element.classList.remove('pop-effect');
-    });
   }
 
   // When the user clicks on (x), close the modal
@@ -196,19 +181,6 @@ document.addEventListener("DOMContentLoaded", function() {
     questionEl.textContent = question;
     answerEl.value = '';
   }
-  
-  // Incorrect answer function
-  function incorrectAnswer() {
-    correctStreak = 0;
-    incorrect++;
-    incorrectStreak++;
-    triggerPopEffect(false);
-    if (incorrectStreak === 5) {
-      displayModal(fiveIncorrectPrompt);
-    } else if (incorrectStreak === 10) {
-      displayModal(tenIncorrectPrompt);
-    }
-  }
 
   // Confetti function
   function showConfetti() {
@@ -220,21 +192,38 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 700); // Duration should match the animation duration
   }
 
-  // Check answer function
+  // Sub check answer functions
+  // Incorrect answer function
+  function incorrectAnswerFunction() {
+    correctStreak = 0;
+    incorrect++;
+    incorrectStreak++;
+    if (incorrectStreak === 5) {
+      displayModal(fiveIncorrectPrompt);
+    } else if (incorrectStreak === 10) {
+      displayModal(tenIncorrectPrompt);
+    }
+  }
+
+  // Correct answer function
+  function correctAnswerFunction() {
+    showConfetti();
+    score++;
+    correct++;
+    correctSavingsAccount++;
+    readyToCompound = true;
+    correctStreak++;
+    snow += 10;
+    incorrectStreak = 0;
+  }
+
+  // Main check answer function
   function checkAnswer() {
     if (mainBtn.textContent === "Check Answer") {
       const userAnswer = parseFloat(answerEl.value);
       if (!isNaN(userAnswer)) {
         if (userAnswer === correctAnswer) {
-          showConfetti();
-          score++;
-          correct++;
-          correctSavingsAccount++;
-          readyToCompound = true;
-          correctStreak++;
-          snow += 10;
-          incorrectStreak = 0;
-          triggerPopEffect(true);
+          correctAnswerFunction();
           if (correctStreak % 5 === 0) {
             displayFeedback(`${correctStreak} In A Row!`, "#ffb121");
           } else {
@@ -249,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function() {
           if (score > 0) {
             score--;
           }
-          incorrectAnswer()
+          incorrectAnswerFunction()
           prevQuestion = currentQuestion;
           prevAnswer = correctAnswer;
           displayFeedback("Incorrect.", "#f44335", prevQuestion, prevAnswer); 
@@ -261,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (score > 0) {
           score--;
         }
-        incorrectAnswer();
+        incorrectAnswerFunction();
         displayFeedback("Invalid Input!", "#f44336");
         if (score >= 0 && score % 10 === 9) {
           difficultyLevel--;
@@ -296,7 +285,6 @@ document.addEventListener("DOMContentLoaded", function() {
     updateScoreUI();
     saveGameState();
   }
-  
   
   // Function to save game state to localStorage
   function saveGameState() {
@@ -376,3 +364,5 @@ document.addEventListener("DOMContentLoaded", function() {
   updateScoreUI();
   saveGameState();
 });
+
+// If you're reading this, I hope you have a great day, and yes, I know my code writing sucks:)

@@ -13,6 +13,7 @@ const shopSnow = document.getElementById("shop-snow");
 const starterPackPrice = 250;
 const classicPackPrice = 500;
 const elitePackPrice = 1000;
+const cardDelay = 1000;
 
 // Penguins
 const thomas = document.getElementById("thomas");
@@ -38,7 +39,7 @@ const sarah = document.getElementById("sarah");
 const holden = document.getElementById("holden");
 
 // Let variables
-let snow = 0;
+let snow;
 
 let thomasUnlocked = false;
 let arisUnlocked = false;
@@ -233,8 +234,10 @@ function loadGameState() {
 
   if (gameState) {
     snow = gameState.snow;
-    shopSnow.textContent = `Your Snow: ${snow}`;
+  } else {
+    snow = 0;
   }
+  shopSnow.textContent = `Your Snow: ${snow}`;
 }
 
 // Save snow function
@@ -271,20 +274,20 @@ function starterPackOpen() {
       // Update unlock status based on the penguin
       penguinCheck(penguin);
     }
-
+    
     // Fade in the cards after they've been added
     const penguinCards = document.querySelectorAll('.pack-penguin');
     penguinCards.forEach((card, index) => {
       setTimeout(() => {
-        card.classList.add('show-card');  // Add the class to trigger the opacity transition
-      }, index * 500); // Stagger the fade-in by 500ms for each card
+        card.classList.add('show-card');  
+      }, index * cardDelay); 
     });
     
     updateGame();
     starterModal.style.display = "flex";
     setTimeout(function() {
       starterModal.style.display = "none";
-    }, 4000);
+    }, 5000);
   }
 }
 
@@ -305,10 +308,10 @@ function classicPackOpen() {
         imageUrl = `Images/Penguin_Cards/Uncommons/${penguin}.svg`;
       } else {
         let randomNum = Math.random();
-        if (randomNum < 0.35) {
+        if (randomNum < 0.40) {
           penguin = commonPenguins[Math.floor(Math.random() * commonPenguins.length)];
           imageUrl = `Images/Penguin_Cards/Commons/${penguin}.svg`;
-        } else if (randomNum < 0.85) {
+        } else if (randomNum < 0.90) {
           penguin = uncommonPenguins[Math.floor(Math.random() * uncommonPenguins.length)];
           imageUrl = `Images/Penguin_Cards/Uncommons/${penguin}.svg`;
         } else {
@@ -326,15 +329,15 @@ function classicPackOpen() {
     const penguinCards = document.querySelectorAll('.pack-penguin');
     penguinCards.forEach((card, index) => {
       setTimeout(() => {
-        card.classList.add('show-card');  // Add the class to trigger the opacity transition
-      }, index * 500); // Stagger the fade-in by 500ms for each card
+        card.classList.add('show-card'); 
+      }, index * cardDelay);
     });
     
     updateGame();
     classicModal.style.display = "flex";
     setTimeout(function() {
       classicModal.style.display = "none";
-    }, 6000);
+    }, 7000);
   }
 }
 
@@ -358,13 +361,13 @@ function elitePackOpen() {
         imageUrl = `Images/Penguin_Cards/Rares/${penguin}.svg`;
       } else {
         let randomNum = Math.random();
-        if (randomNum < 0.1) {
+        if (randomNum < 0.15) {
           penguin = commonPenguins[Math.floor(Math.random() * commonPenguins.length)];
           imageUrl = `Images/Penguin_Cards/Commons/${penguin}.svg`;
-        } else if (randomNum < 0.50) {
+        } else if (randomNum < 0.60) {
           penguin = uncommonPenguins[Math.floor(Math.random() * uncommonPenguins.length)];
           imageUrl = `Images/Penguin_Cards/Uncommons/${penguin}.svg`;
-        } else if (randomNum < 0.85) {
+        } else if (randomNum < 0.95) {
           penguin = rarePenguins[Math.floor(Math.random() * rarePenguins.length)];
           imageUrl = `Images/Penguin_Cards/Rares/${penguin}.svg`;
         } else {
@@ -382,15 +385,15 @@ function elitePackOpen() {
     const penguinCards = document.querySelectorAll('.pack-penguin');
     penguinCards.forEach((card, index) => {
       setTimeout(() => {
-        card.classList.add('show-card');  // Add the class to trigger the opacity transition
-      }, index * 500); // Stagger the fade-in by 500ms for each card
+        card.classList.add('show-card'); 
+      }, index * cardDelay); 
     });
     
     updateGame();
     eliteModal.style.display = "flex";
     setTimeout(function() {
       eliteModal.style.display = "none";
-    }, 8000);
+    }, 9000);
   }
 }
 
@@ -401,3 +404,5 @@ elitePackEl.addEventListener('click', elitePackOpen);
 
 loadGameState();
 galleryUpdate();
+
+// If you're reading this, I hope you have a great day, and yes, I know my code writing sucks:)

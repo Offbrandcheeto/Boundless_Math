@@ -120,13 +120,13 @@
   width: 20vw;
   height: auto;
   opacity: 0;
-  transform: scale(0.8) rotateY(90deg);  /* Start rotated */
-  transition: opacity 0.5s ease, transform 0.5s ease;  /* Rotate with the transition */
+  transform: scale(0.8) rotateY(90deg);
+  transition: opacity 0.5s ease, transform 0.5s ease; 
 }
 
 .show-card {
   opacity: 1;
-  transform: scale(1) rotateY(0deg);  /* Rotate back to normal */
+  transform: scale(1) rotateY(0deg); 
 }
 
 
@@ -151,8 +151,6 @@
 }
 
 /* Responsive */
-
-/* Larger screens */
 @media (min-width: 1500px) {
   .text-section .grid-container {
     gap: 0rem; 
@@ -216,6 +214,7 @@
   }
 }
 
+/* Phone */
 @media (max-width: 480px) {
   .text-section .gallery-section .gallery-title {
     font-size: 2.5rem;
@@ -272,6 +271,7 @@
   }
 }
 
+/* Small phone */
 @media (max-width: 400px) {
   /* JS added class for sizing */
   .pack-penguin {

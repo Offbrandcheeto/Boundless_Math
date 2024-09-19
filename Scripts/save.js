@@ -14,16 +14,16 @@ const addMsg = "How much Snow would you like to add? (ONLY WHOLE NUMBERS)";
 const takeMsg = "How much Snow would you like to take? (ONLY WHOLE NUMBERS)";
 
 // Let variables
+let snow; 
 let savedSnow = 0; 
 let correctSavingsAccount = 0; 
-let snow = 0; 
 let interestEarned = 0;
 
 // Update UI values function
 function updateValues() {
 	savedSnowEl.textContent = `Saved Snow: ${savedSnow.toFixed(2)}`;
 	currentSnowEl.textContent = `Unsaved Snow: ${snow}`;
-	interestEarnedEl.textContent = `Interest Earned: +${interestEarned.toFixed(2)}`;
+	interestEarnedEl.textContent = `Snow Earned: +${interestEarned.toFixed(2)}`;
 }
 
 // Compound interest function
@@ -131,3 +131,5 @@ takeSnowBtn.addEventListener("click", function() {
 });
 
 loadGameState();
+
+// If you're reading this, I hope you have a great day, and yes, I know my code writing sucks:)
