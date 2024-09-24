@@ -7,6 +7,8 @@
   --main-blue-color: #0061e0; 
   --background-color: #effbff;
   --white: #fff;
+  --green: #4caf50;
+  --red: #f44335;
   --animation-speed: 0.7s;
   --normal: 400;
   --semi-bold: 550;
@@ -116,6 +118,27 @@ body {
   gap: 2rem;
 }
 
+/* Progress */
+.game-section .game-navbar .scoreboard .progress-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-section .game-navbar .scoreboard .progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.game-section .game-navbar .scoreboard .progress-bar {
+  height: 0.75rem;
+  background-color: var(--green);
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+/* Scoreboard items */
 .game-section .game-navbar .scoreboard .scoreboard-item {
   display: flex;
   align-items: center;
@@ -333,7 +356,7 @@ input::-webkit-inner-spin-button {
 
 .modal .modal-content {
   background-color: var(--white);
-  padding: 2.25rem 1.5rem;
+  padding: 2.25rem;
   width: 50%;
   line-height: 1.4;
   position: relative;

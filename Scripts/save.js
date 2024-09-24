@@ -10,7 +10,7 @@ const submitBtn = document.getElementById("submit-btn");
 const modalInput = document.getElementById("modal-input");
 const interestEarnedEl = document.getElementById("interest-earned");
 
-const addMsg = "How much Snow would you like to add? (ONLY WHOLE NUMBERS)";
+const addMsg = "How much Snow would you like to add?";
 const takeMsg = "How much Snow would you like to take? (ONLY WHOLE NUMBERS)";
 
 // Let variables

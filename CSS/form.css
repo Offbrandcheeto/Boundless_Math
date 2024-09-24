@@ -39,7 +39,7 @@
   letter-spacing: 0.1rem;
   text-align: left;
   margin-bottom: 0.5rem;
-  color: #333333;
+  color: var(--main-text-color);
 }
 
 .contact-section .form-container .contact-form .form-group .form-input {
@@ -58,7 +58,7 @@
 }
 
 .contact-section .form-container .contact-form .form-group .form-input:focus {
-  border: 2px solid #007bff;
+  border: 2px solid var(--main-blue-color);
   box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
 

@@ -72,7 +72,7 @@
 }
 
 .text-section .save-container .save-item .saving-info .interest-heading {
-  color: #4caf50;
+  color: var(--green);
   margin-bottom: 1.5rem;
 }
 
@@ -92,12 +92,12 @@
 }
 
 .text-section .save-container .save-item .saving-info .save-buttons .green {
-  background-color: #4caf50;
+  background-color: var(--green);
   margin-right: 2rem;
 }
 
 .text-section .save-container .save-item .saving-info .save-buttons .red {
-  background-color: #f44335;
+  background-color: var(--red);
 }
 
 .text-section .save-container .save-item .saving-info .save-buttons .small-btn:hover {

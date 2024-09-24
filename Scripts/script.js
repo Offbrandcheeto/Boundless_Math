@@ -7,11 +7,14 @@ document.addEventListener("DOMContentLoaded", function() {
   const correctEl = document.getElementById("correct");
   const tierEl = document.getElementById("tier");
   const snowEl = document.getElementById("snow");
-  const modal = document.getElementById("my-modal");
-  const modalText = document.getElementById("modal-text")
   const span = document.getElementsByClassName("close")[0];
+  const modal = document.getElementById("my-modal");
 
   const SCORE_LEVEL_UP = 50;
+  const TOTAL_QUESTIONS = 10;
+  const ADDITION_CHANGE = 5;
+  const SUBTRACTION_CHANGE = 10;
+  const MULTIPLY_DIVIDE_CHANGE = 2;
 
   // Arrays
   const positiveMessages = [
@@ -73,6 +76,8 @@ document.addEventListener("DOMContentLoaded", function() {
   let correctSavingsAccount = 0;
   let incorrect = 0;
   let incorrectStreak = 0;
+  let progressPercent = 0;
+  let canAnswer = true;
   let currentQuestion = null;
   let correctAnswer = null;
   let shownPrompt = false;
@@ -86,7 +91,8 @@ document.addEventListener("DOMContentLoaded", function() {
       setTimeout(function() {
         mainBtn.textContent = "Check Answer";
         mainBtn.style.backgroundColor = "#0061e0";
-      }, 2500);
+        canAnswer = true;
+      }, 2000);
     } else {
       setTimeout(function() {
         const incorrectMessage = incorrectMessages[Math.floor(Math.random() * incorrectMessages.length)];
@@ -98,8 +104,16 @@ document.addEventListener("DOMContentLoaded", function() {
       setTimeout(function() {
         mainBtn.textContent = "Check Answer";
         mainBtn.style.backgroundColor = "#0061e0";
+        canAnswer = true;
       }, 8000);
     }
+  }
+
+  // Progress function
+  function updateProgress(correctAnswers) {
+    progressPercent = (correctAnswers / TOTAL_QUESTIONS) * 100;
+    const progressBar = document.getElementById('progress-bar');
+    progressBar.style.width = progressPercent + "%";
   }
 
   // When the user clicks on (x), close the modal
@@ -109,9 +123,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Show modal function
   function displayModal(text) {
+    const modalText = document.getElementById("modal-text");
     modal.style.display = "flex";
     span.style.display = "none";
     modalText.textContent = text;
+
     setTimeout(function() {
       span.style.display = "block";
     }, 2500);
@@ -120,27 +136,27 @@ document.addEventListener("DOMContentLoaded", function() {
   // Generate question function
   function generateQuestion(operation, difficultyLevel) {
     if (operation === "Addition") {
-      const n1 = Math.floor(Math.random() * (5 * difficultyLevel) + 1);
-      const n2 = Math.floor(Math.random() * (5 * difficultyLevel) + 1);
+      const n1 = Math.floor(Math.random() * (ADDITION_CHANGE * difficultyLevel) + 1);
+      const n2 = Math.floor(Math.random() * (ADDITION_CHANGE * difficultyLevel) + 1);
       const answer = n1 + n2;
       const question = `${n1} + ${n2} = `;
       return [question, answer];
     } else if (operation === "Subtraction") {
-      let n1 = Math.floor(Math.random() * (10 * difficultyLevel) + 1);
-      let n2 = Math.floor(Math.random() * (10 * difficultyLevel) + 1);
+      let n1 = Math.floor(Math.random() * (SUBTRACTION_CHANGE * difficultyLevel) + 1);
+      let n2 = Math.floor(Math.random() * (SUBTRACTION_CHANGE * difficultyLevel) + 1);
       [n1, n2] = [Math.max(n1, n2), Math.min(n1, n2)];
       const answer = n1 - n2;
       const question = `${n1} - ${n2} = `;
       return [question, answer];
     } else if (operation === "Multiplication") {
-      const n1 = Math.floor(Math.random() * (3 * difficultyLevel) + 1);
-      const n2 = Math.floor(Math.random() * (3 * difficultyLevel) + 1);
+      const n1 = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + 1);
+      const n2 = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + 1);
       const answer = n1 * n2;
       const question = `${n1} x ${n2} = `;
       return [question, answer];
     } else if (operation === "Division") {
-      const n2 = Math.floor(Math.random() * (3 * difficultyLevel) + 1);
-      const answer = Math.floor(Math.random() * (3 * difficultyLevel) + 1);
+      const n2 = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + 1);
+      const answer = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + 1);
       const n1 = n2 * answer;
       const question = `${n1} / ${n2} = `;
       return [question, answer];
@@ -159,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
       phase += 1;
       levelUpPrompts = [false, false, false, false];
       difficultyLevel = (phase - 1) * 5 + 1;
-    } 
+    }
     nextQuestion();
   }
   
@@ -195,6 +211,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Sub check answer functions
   // Incorrect answer function
   function incorrectAnswerFunction() {
+    canAnswer = false;
     correctStreak = 0;
     incorrect++;
     incorrectStreak++;
@@ -219,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Main check answer function
   function checkAnswer() {
-    if (mainBtn.textContent === "Check Answer") {
+    if (canAnswer) {
       const userAnswer = parseFloat(answerEl.value);
       if (!isNaN(userAnswer)) {
         if (userAnswer === correctAnswer) {
@@ -282,6 +299,7 @@ document.addEventListener("DOMContentLoaded", function() {
       displayModal(welcomePromptTwo);
       shownPromptTwo = true;
     }
+    updateProgress(score % 10);
     updateScoreUI();
     saveGameState();
   }
@@ -291,6 +309,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const state = {
       operationIndex,
       difficultyLevel,
+      phase,
       score,
       snow,
       correct,
@@ -300,6 +319,7 @@ document.addEventListener("DOMContentLoaded", function() {
       incorrectStreak,
       currentQuestion,
       correctAnswer,
+      progressPercent,
       shownPrompt,
       shownPromptTwo
     };
@@ -317,6 +337,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const state = JSON.parse(savedState);
       operationIndex = state.operationIndex || 0;
       difficultyLevel = state.difficultyLevel || 1;
+      phase = state.phase || 1;
       score = state.score || 0;
       snow = state.snow || 0;
       correct = state.correct || 0;
@@ -324,6 +345,7 @@ document.addEventListener("DOMContentLoaded", function() {
       incorrect = state.incorrect || 0;
       incorrectStreak = state.incorrectStreak || 0;
       correctAnswer = state.correctAnswer || null;
+      progressPercent = state.progressPercent || 0;
       shownPrompt = state.shownPrompt || false;
       shownPromptTwo = state.shownPromptTwo || false;
     }
@@ -337,6 +359,7 @@ document.addEventListener("DOMContentLoaded", function() {
       questionEl.textContent = currentQuestion;
       answerEl.value = '';
     }
+    updateProgress(progressPercent / 10);
   }
   
   // Load game state from localStorage at the beginning

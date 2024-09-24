@@ -37,7 +37,14 @@
     <section class="game-section">
       <div class="game-navbar">
         <ul class="scoreboard">
-          <li id="tier" class="scoreboard-item tier-heading"></li>
+          <div class="progress-wrapper">
+            <li id="tier" class="scoreboard-item tier-heading">Tier 1</li>
+            <li class="scoreboard-item">
+              <div id="progress-container" class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+              </div>
+            </li>
+          </div>
           <li class="scoreboard-item">
             <img src="Images/Icons/Snowflake.svg" alt="Snowflake" class="game-icon" />
             <h2 id="snow" class="game-heading"></h2>
@@ -76,7 +83,7 @@
 
     <!-- Modal -->
     <div id="my-modal" class="modal">
-      <div class="modal-content">
+      <div id="modal-content" class="modal-content">
         <span class="close">&times;</span>
         <p id="modal-text"></p>
       </div>

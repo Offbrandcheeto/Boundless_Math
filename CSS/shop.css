@@ -129,7 +129,6 @@
   transform: scale(1) rotateY(0deg); 
 }
 
-
 /* Sizing modals */
 #starter-modal .shop-modal-content {
   grid-template-columns: repeat(2, 1fr);
