@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const TOTAL_QUESTIONS = 10;
   const ADDITION_CHANGE = 5;
   const SUBTRACTION_CHANGE = 10;
-  const MULTIPLY_DIVIDE_CHANGE = 2;
+  const MULTIPLY_DIVIDE_CHANGE = 1;
 
   // Arrays
   const positiveMessages = [
@@ -83,32 +83,54 @@ document.addEventListener("DOMContentLoaded", function() {
   let shownPrompt = false;
   let shownPromptTwo = false;
 
-  // Feedback function
-  function displayFeedback(text, color, question, answer) {
-    mainBtn.textContent = text;
-    mainBtn.style.backgroundColor = color;
+  // Feedback functions
+  let feedbackTimers = [];
+
+  function displayFeedback(text, color, question = "", answer = "") {
+    // Clear any existing timers before starting new ones
+    clearFeedbackTimers();
+  
+    // Set initial feedback text and color
+    updateFeedback(text, color);
+  
+    // Handle correct/incorrect paths
     if (color !== "#f44335") {
-      setTimeout(function() {
-        mainBtn.textContent = "Check Answer";
-        mainBtn.style.backgroundColor = "#0061e0";
-        canAnswer = true;
-      }, 2000);
+      // Correct answer path
+      queueFeedback("Check Answer", "#0061e0", 2000);
     } else {
-      setTimeout(function() {
-        const incorrectMessage = incorrectMessages[Math.floor(Math.random() * incorrectMessages.length)];
-        mainBtn.textContent = `${incorrectMessage}`;
-      }, 2000);
-      setTimeout(function() {
-        mainBtn.textContent = `${question} ${answer}`;
-      }, 5000);
-      setTimeout(function() {
-        mainBtn.textContent = "Check Answer";
-        mainBtn.style.backgroundColor = "#0061e0";
-        canAnswer = true;
-      }, 8000);
+      // Incorrect answer path
+      queueFeedback(
+        incorrectMessages[Math.floor(Math.random() * incorrectMessages.length)],
+        null, 2000
+      );
+      queueFeedback(`${question} ${answer}`, null, 5000);
+      queueFeedback("Check Answer", "#0061e0", 8000);
     }
   }
-
+  
+  // Update the feedback display
+  function updateFeedback(text, color) {
+    mainBtn.textContent = text;
+    if (color) mainBtn.style.backgroundColor = color;
+  }
+  
+  // Queue feedback updates with delays
+  function queueFeedback(text, color, delay) {
+    const timer = setTimeout(() => {
+      updateFeedback(text, color);
+      if (text === "Check Answer") {
+        canAnswer = true;
+      }
+    }, delay);
+    feedbackTimers.push(timer);
+  }
+  
+  // Clear all feedback timers
+  function clearFeedbackTimers() {
+    feedbackTimers.forEach(timer => clearTimeout(timer));
+    feedbackTimers = [];
+  }
+  
   // Progress function
   function updateProgress(correctAnswers) {
     progressPercent = (correctAnswers / TOTAL_QUESTIONS) * 100;
@@ -134,6 +156,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Generate question function
+  function generateRandomNumber1to5() {
+    return Math.floor(Math.random() * 5) + 1;
+  }
+  
   function generateQuestion(operation, difficultyLevel) {
     if (operation === "Addition") {
       const n1 = Math.floor(Math.random() * (ADDITION_CHANGE * difficultyLevel) + 1);
@@ -149,14 +175,14 @@ document.addEventListener("DOMContentLoaded", function() {
       const question = `${n1} - ${n2} = `;
       return [question, answer];
     } else if (operation === "Multiplication") {
-      const n1 = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + 1);
-      const n2 = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + 1);
+      const n1 = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + generateRandomNumber1to5());
+      const n2 = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + generateRandomNumber1to5());
       const answer = n1 * n2;
       const question = `${n1} x ${n2} = `;
       return [question, answer];
     } else if (operation === "Division") {
-      const n2 = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + 1);
-      const answer = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + 1);
+      const n2 = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + generateRandomNumber1to5());
+      const answer = Math.floor(Math.random() * (MULTIPLY_DIVIDE_CHANGE * difficultyLevel) + generateRandomNumber1to5());
       const n1 = n2 * answer;
       const question = `${n1} / ${n2} = `;
       return [question, answer];
