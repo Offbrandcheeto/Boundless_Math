@@ -76,13 +76,8 @@
   margin-bottom: 1.5rem;
 }
 
-.text-section .save-container .save-item .saving-account .saving-account-item .save-penguin {
-  width: 60%;
-  transition: 0.5s ease transform;
-}
-
-.text-section .save-container .save-item .saving-account .saving-account-item .save-penguin:hover {
-  transform: scale(1.05);
+.text-section .save-container .save-item .saving-account .saving-account-item .save-icon {
+  width: 50%;
 }
 
 .text-section .save-container .save-item .saving-info .save-buttons {
@@ -107,7 +102,7 @@
 
 /* Responsive */
 @media (min-width: 1500px) {
-  .text-section .save-container .save-item .saving-account .saving-account-item .save-penguin {
+  .text-section .save-container .save-item .saving-account .saving-account-item .save-icon {
     width: 50%;
   }
 }
@@ -144,6 +139,10 @@
   .text-section .save-container .save-item .saving-info .save-heading-small {
     font-size: 1.65rem;
   }
+
+  .text-section .save-container .save-item .saving-account .saving-account-item .save-icon {
+    width: 45%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -166,6 +165,10 @@
   .text-section .save-container .save-item .saving-info .save-buttons .small-btn {
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
+  }
+
+  .text-section .save-container .save-item .saving-account .saving-account-item .save-icon {
+    margin-bottom: 0.25rem;
   }
 }
 

@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Prompts
   const welcomePrompt = `Boundless Math is an infinite math operations game that automatically adjusts to your skill level as you play. Correct answers will bring tougher problems, while incorrect ones will make the problems easier. Your journey begins with addition and advances through subtraction, multiplication, and, finally division. Once you complete division, the game returns to addition and starts the cycle over again. However, the problems will be more challenging than they were the previous time around. Each cycle will push you further, gradually building your skills and talents. It'll be a challenge, but as you keep putting in the work and showing up, you'll discover that your potential is truly boundless!`; 
 
-  const welcomePromptTwo = `Congratulations on answering your first question and beginning your journey! You took the first step, which is always the hardest one, and I'd like to introduce you to two important parts of the game: the Shop and Save sections. In the Shop section, you can buy packs of cards containing different penguins you can collect. You purchase the packs using the Snow you collect when you answer a question correctly. You can also use your Snow in the Save section, where you can put some or all of it into a savings account. Doing this helps you build Snow quickly, so it's highly recommended that you do it.`
+  const welcomePromptTwo = `Congratulations on answering your first question and beginning your journey! You took the first step, which is always the hardest one, and I'd like to introduce you to two important parts of the game: the Shop and Save sections. In the Shop section, you can buy packs of cards containing different penguins you can collect. You purchase the packs using the Snow you collect when you answer a question correctly. You can also use your Snow in the Save section, where you can put some or all of it into a savings account. Saving helps you build Snow quickly, so it's highly recommended that you do it.`
 
   const fiveIncorrectPrompt = "It looks like you have gotten five problems incorrect in a row. First of all, good job. You are currently pushing yourself, and you keep showing up even in the face of difficulty. The game should go back to some more manageable problems for you to practice, but take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Don't be afraid to ask questions or seek out help. This is how you learn, and you're doing a great job. Keep it up.";
 
@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
     setTimeout(() => {
       confettiContainer.style.display = 'none';
-    }, 700); // Duration should match the animation duration
+    }, 750); // Duration should match the animation duration
   }
 
   // Sub check answer functions

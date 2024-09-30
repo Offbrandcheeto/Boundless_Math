@@ -166,6 +166,11 @@
     font-size: 1.5rem;
   }
 
+  /* Confetti */
+  .game-section .confetti-container .confetti {
+    width: 300px;
+  }
+
   /* Text section */
   .text-section {
     width: 95%;
@@ -198,6 +203,11 @@
     border-top: none;
     border-bottom: 2px solid var(--main-text-color);
   }
+
+  /* Scoreboard */
+  .game-section .game-navbar .scoreboard {
+    gap: 1rem;
+  }
 }
 
 /* Small tablet */
@@ -205,6 +215,11 @@
   /* Container */
   .game-section .container {
     height: 45%;
+  }
+
+  /* Confetti */
+  .game-section .confetti-container .confetti {
+    width: 250px;
   }
 
   /* Modal */
@@ -331,6 +346,11 @@
 
   .main-input {
     font-size: 1.25rem;
+  }
+
+  /* Confetti */
+  .game-section .confetti-container .confetti {
+    width: 150px;
   }
 
   /* Buttons */
