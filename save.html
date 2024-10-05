@@ -61,14 +61,19 @@
             want and take it out whenever you like. Plus, your saved Snow will grow by 1% for every question you answer correctly and won't lose any value if you answer 
             a question wrong. 1% may not sound like much, but you'll see that it adds up quickly!
           </p>
-          <h3 id="current-snow" class="save-heading-medium"></h3>
           <div class="saving-account">
             <div class="saving-info saving-account-item">
-              <h3 id="saved-snow" class="save-heading-medium"></h3>
-              <h3 id="interest-earned" class="save-heading-small interest-heading"></h3>
+              <div class="saved-snow-container">
+                <img src="Images/Icons/Snowflake.svg" class="save-snowflake" alt="Snowflake">
+                <h3 id="saved-snow" class="save-heading-medium white"></h3>
+              </div>
+              <div class="saved-snow-container">
+                <img src="Images/Icons/Snowflake.svg" class="save-snowflake smaller" alt="Snowflake">
+                <h3 id="interest-earned" class="save-heading-small interest-heading"></h3>
+              </div>
               <div class="save-buttons">
-                <button id="add-snow"class="small-btn green">Add Snow</button>
-                <button id="take-snow" class="small-btn red">Take Snow</button>
+                <button id="add-snow"class="small-btn add">Add</button>
+                <button id="take-snow" class="small-btn take">Take</button>
               </div>
             </div>
             <div class="saving-account-item">
@@ -87,7 +92,7 @@
     <div id="modal" class="modal top">
       <div class="modal-content modal-center">
         <span id="close-btn" class="close">&times;</span>
-        <p id="modal-text" class="modal-text" ></p>
+        <p id="modal-text" class="save-modal-text"></p>
         <input 
           type="number" 
           id="modal-input" 

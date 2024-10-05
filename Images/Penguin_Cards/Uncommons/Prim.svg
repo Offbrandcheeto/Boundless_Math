@@ -28,7 +28,7 @@
       }
 
       .cls-6 {
-        stroke: #939598;
+        stroke: #9ccfb1;
         stroke-miterlimit: 10;
         stroke-width: 5px;
       }
@@ -37,12 +37,12 @@
         fill: none;
       }
 
-      .cls-3 {
-        fill: url(#Prim);
+      .cls-7 {
+        fill: #9ccfb1;
       }
 
-      .cls-7 {
-        fill: #939598;
+      .cls-3 {
+        fill: url(#Prim);
       }
 
       .cls-4 {

@@ -56,13 +56,35 @@ document.addEventListener("DOMContentLoaded", function() {
   const operations = ["Addition", "Subtraction", "Multiplication", "Division"];
 
   // Prompts
-  const welcomePrompt = `Boundless Math is an infinite math operations game that automatically adjusts to your skill level as you play. Correct answers will bring tougher problems, while incorrect ones will make the problems easier. Your journey begins with addition and advances through subtraction, multiplication, and, finally division. Once you complete division, the game returns to addition and starts the cycle over again. However, the problems will be more challenging than they were the previous time around. Each cycle will push you further, gradually building your skills and talents. It'll be a challenge, but as you keep putting in the work and showing up, you'll discover that your potential is truly boundless!`; 
+  const welcomePrompt = [
+    "Boundless Math is an infinite math operations game that automatically adjusts to your skill level as you play. Correct answers will bring tougher problems, while incorrect ones will make the problems easier.",
+    "Your journey begins with addition and advances through subtraction, multiplication, and, finally division. Once you complete division, the game returns to addition and starts the cycle over again.",
+    "However, the problems will be more challenging than they were the previous time around. Each cycle will push you further, gradually building your skills and talents. It'll be a challenge, but as you keep putting in the work and showing up, you'll discover that your potential is truly boundless!"
+  ];
 
-  const welcomePromptTwo = `Congratulations on answering your first question and beginning your journey! You took the first step, which is always the hardest one, and I'd like to introduce you to two important parts of the game: the Shop and Save sections. In the Shop section, you can buy packs of cards containing different penguins you can collect. You purchase the packs using the Snow you collect when you answer a question correctly. You can also use your Snow in the Save section, where you can put some or all of it into a savings account. Saving helps you build Snow quickly, so it's highly recommended that you do it.`
+  const welcomePromptTwo = [
+    "Congratulations on answering your first question and beginning your journey! You took the first step, which is always the hardest one, and I'd like to introduce you to two important parts of the game: the Shop and Save sections.",
+    "In the Shop section, you can buy packs of cards containing different penguins you can collect. You purchase the packs using the Snow you collect when you answer a question correctly.",
+    "You can also use your Snow in the Save section, where you can put some or all of it into a savings account. Saving helps you build Snow quickly, so it's highly recommended that you do it."
+  ];
 
-  const fiveIncorrectPrompt = "It looks like you have gotten five problems incorrect in a row. First of all, good job. You are currently pushing yourself, and you keep showing up even in the face of difficulty. The game should go back to some more manageable problems for you to practice, but take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Don't be afraid to ask questions or seek out help. This is how you learn, and you're doing a great job. Keep it up.";
+  const welcomePromptThree = [
+    "Always remember that this is a safe place to fail. No matter where your math skills are now, you'll very quickly reach a point where the game will get difficult, which is a really good thing!",
+    "If you asked a student who just graduated high school what 1 + 1 is all day, they would get the question correct every time. But will they learn anything?",
+    "Definitely not, but if you gave them a challenging calculus problem that tested their math skills, then they would be making growth. They will have to work much harder and likely fail at some point, but this is how learning occurs. Keep this in mind as you carry on, and always remember you're awesome!"
+  ];
 
-  const tenIncorrectPrompt = "It looks like you have gotten ten problems incorrect in a row. First of all, outstanding job. You are really pushing yourself, and you keep showing up even in the face of tremendous difficulty. Be sure to take a look at the learn section and review the operation you are on. Do additional research if necessary, or ask a friend or teacher for help. Review the concepts and do a little bit of practice on your own. Once you've done this, return and continue playing after taking a break. Remember, you learn far more when you lose than when you win, so if you see others around you getting problems correct, don't get upset. Odds are that you are learning more than they are, and they should be jealous of you. Keep going. I believe in you and have confidence in yourself.";
+  const fiveIncorrectPrompt = [
+    "It looks like you have gotten five problems incorrect in a row. First of all, good job. You are currently pushing yourself, and you keep showing up even in the face of difficulty.",
+    "The game should go back to some more manageable problems for you to practice, but take a look at the learn section and review the operation you are on.",
+    "Do additional research if necessary, or ask a friend or teacher for help. Don't be afraid to ask questions or seek out help. This is how you learn, and you're doing a great job. Keep it up."
+  ];
+
+  const tenIncorrectPrompt = [
+    "It looks like you have gotten ten problems incorrect in a row. First of all, outstanding job. You are really pushing yourself, and you keep showing up even in the face of tremendous difficulty. Be sure to take a look at the learn section and review the operation you are on.",
+    "Do additional research if necessary, or ask a friend or teacher for help. Review the concepts and do a little bit of practice on your own. Once you've done this, return and continue playing after taking a break.",
+    "Remember, you learn far more when you lose than when you win, so if you see others around you getting problems correct, don't get upset. Odds are that you are learning more than they are, and they should be jealous of you. Keep going. I believe in you and have confidence in yourself."
+  ];
 
   // Let variables
   let levelUpPrompts = [false, false, false, false];
@@ -82,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let correctAnswer = null;
   let shownPrompt = false;
   let shownPromptTwo = false;
+  let shownPromptThree = false;
 
   // Feedback functions
   let feedbackTimers = [];
@@ -145,14 +168,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Show modal function
   function displayModal(text) {
-    const modalText = document.getElementById("modal-text");
+    const modalTextOne = document.getElementById("modal-text-one");
+    const modalTextTwo = document.getElementById("modal-text-two");
+    const modalTextThree = document.getElementById("modal-text-three");
     modal.style.display = "flex";
-    span.style.display = "none";
-    modalText.textContent = text;
-
-    setTimeout(function() {
-      span.style.display = "block";
-    }, 2500);
+    span.style.display = "block";
+    modalTextOne.textContent = text[0];
+    modalTextTwo.textContent = text[1];
+    modalTextThree.textContent = text[2];
   }
 
   // Generate question function
@@ -307,7 +330,11 @@ document.addEventListener("DOMContentLoaded", function() {
       // Check if score reaches the level up threshold
       if (score >= SCORE_LEVEL_UP) {
         if (levelUpPrompts[operationIndex] === false) {
-          let levelUpPrompt = `Congratulations! You've shown mastery in ${operations[operationIndex]} Phase ${phase}, and you should be incredibly proud of your accomplishment. Your dedication and determination have paid off. Now, take a moment to reflect on your journey so far. Consider the problems you struggled with, and then think about the moments when you successfully solved a problem. Did you learn anything from those moments of success? Most likely not, because you already knew the answer. Your previous mistakes and failures led you to be able to answer a problem correctly. As you continue forward, keep in mind that it's through failure that you learn, and success simply confirms that you've learned something.`;
+          let levelUpPrompt = [
+            `Congratulations! You've shown mastery in ${operations[operationIndex]} Phase ${phase}, and you should be incredibly proud of your accomplishment. Your dedication and determination have paid off.`, 
+            "Now, take a moment to reflect on your journey so far. Consider the problems you struggled with, and then think about the moments when you successfully solved a problem. Did you learn anything from those moments of success?", 
+            "Most likely not, because you already knew the answer. Your previous mistakes and failures led you to be able to answer a problem correctly. As you continue forward, keep in mind that it's through failure that you learn, and success simply confirms that you've learned something."
+          ];
           levelUpPrompts[operationIndex] = true;
           displayModal(levelUpPrompt);
         }
@@ -324,6 +351,10 @@ document.addEventListener("DOMContentLoaded", function() {
     if (shownPromptTwo === false) {
       displayModal(welcomePromptTwo);
       shownPromptTwo = true;
+    }
+    if (shownPromptThree === false && score === 5) {
+      displayModal(welcomePromptThree);
+      shownPromptThree = true;
     }
     updateProgress(score % 10);
     updateScoreUI();
@@ -347,7 +378,8 @@ document.addEventListener("DOMContentLoaded", function() {
       correctAnswer,
       progressPercent,
       shownPrompt,
-      shownPromptTwo
+      shownPromptTwo,
+      shownPromptThree
     };
 
     localStorage.setItem("gameState", JSON.stringify(state));
@@ -374,6 +406,7 @@ document.addEventListener("DOMContentLoaded", function() {
       progressPercent = state.progressPercent || 0;
       shownPrompt = state.shownPrompt || false;
       shownPromptTwo = state.shownPromptTwo || false;
+      shownPromptThree = state.shownPromptThree || false;
     }
 
     const savedQuestion = localStorage.getItem("currentQuestion");

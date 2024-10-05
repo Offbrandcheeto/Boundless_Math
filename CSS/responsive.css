@@ -41,9 +41,12 @@
 
   /* Modal */
   .modal .modal-content {
+    padding: 3rem;
+  }
+
+  .modal .modal-content .modal-text{
     font-size: 1.6rem;
     line-height: 1.6;
-    padding: 3rem;
   }
 
   .close {
@@ -224,9 +227,12 @@
 
   /* Modal */
   .modal .modal-content {
-    font-size: 1rem;
     padding: 1.5rem;
     width: 85%;
+  }
+
+  .modal .modal-content .modal-text {
+    font-size: 1rem;
   }
 
   .close {
@@ -393,6 +399,9 @@
   /* Modal */
   .modal .modal-content {
     width: 90%;
+  }
+
+  .modal .modal-content .modal-text {
     font-size: 0.8rem;
   }
 }

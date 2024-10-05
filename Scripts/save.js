@@ -1,6 +1,6 @@
 // Const variables
 const savedSnowEl = document.getElementById("saved-snow");
-const currentSnowEl = document.getElementById("current-snow");
+// const currentSnowEl = document.getElementById("current-snow");
 const addSnowBtn = document.getElementById("add-snow");
 const takeSnowBtn = document.getElementById("take-snow");
 const modal = document.getElementById("modal");
@@ -21,9 +21,9 @@ let interestEarned = 0;
 
 // Update UI values function
 function updateValues() {
-	savedSnowEl.textContent = `Saved Snow: ${savedSnow.toFixed(2)}`;
-	currentSnowEl.textContent = `Unsaved Snow: ${snow}`;
-	interestEarnedEl.textContent = `Snow Earned: +${interestEarned.toFixed(2)}`;
+	savedSnowEl.textContent = `${savedSnow.toFixed(2)}`;
+	// currentSnowEl.textContent = `Unsaved Snow: ${snow}`;
+	interestEarnedEl.textContent = `+${interestEarned.toFixed(2)}`;
 }
 
 // Compound interest function
@@ -43,12 +43,10 @@ function saveTransaction(transaction) {
 		alert("Please enter a whole number.");
 		return; 
 	}
-
 	if (userInput < 1) {
 		alert("Please enter a number greater than 0.");
 		return;
 	}
-
 	if (transaction === "add") {
 		if (snow >= userInput) {
 			snow -= userInput;
