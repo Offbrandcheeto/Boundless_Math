@@ -57,33 +57,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Prompts
   const welcomePrompt = [
-    "Boundless Math is an infinite math operations game that automatically adjusts to your skill level as you play. Correct answers will bring tougher problems, while incorrect ones will make the problems easier.",
-    "Your journey begins with addition and advances through subtraction, multiplication, and, finally division. Once you complete division, the game returns to addition and starts the cycle over again.",
-    "However, the problems will be more challenging than they were the previous time around. Each cycle will push you further, gradually building your skills and talents. It'll be a challenge, but as you keep putting in the work and showing up, you'll discover that your potential is truly boundless!"
+    "Boundless Math is a fun game where the math gets easier or harder depending on how you're doing. If you get questions right, the questions will get harder. If you get questions wrong, the questions will get easier.",
+    "You start by adding numbers. Then, you’ll do subtraction, multiplication, and division. After division, the game starts over with adding, but it'll be harder this time.",
+    "The math will help you get better and better. It might seem hard, but if you keep practicing, you’ll get super good at it!"
   ];
 
   const welcomePromptTwo = [
-    "Congratulations on answering your first question and beginning your journey! You took the first step, which is always the hardest one, and I'd like to introduce you to two important parts of the game: the Shop and Save sections.",
-    "In the Shop section, you can buy packs of cards containing different penguins you can collect. You purchase the packs using the Snow you collect when you answer a question correctly.",
-    "You can also use your Snow in the Save section, where you can put some or all of it into a savings account. Saving helps you build Snow quickly, so it's highly recommended that you do it."
-  ];
-
-  const welcomePromptThree = [
-    "Always remember that this is a safe place to fail. No matter where your math skills are now, you'll very quickly reach a point where the game will get difficult, which is a really good thing!",
-    "If you asked a student who just graduated high school what 1 + 1 is all day, they would get the question correct every time. But will they learn anything?",
-    "Definitely not, but if you gave them a challenging calculus problem that tested their math skills, then they would be making growth. They will have to work much harder and likely fail at some point, but this is how learning occurs. Keep this in mind as you carry on, and always remember you're awesome!"
+    "Great job answering your first question and starting your journey! The first step is always the hardest, and now I'd like to tell you about two important parts of the game: the Shop and Save sections.",
+    "In the Shop, you can buy packs of cards with different penguins to collect. You use the Snow you earn by answering questions correctly to buy these packs.",
+    "In the Save section, you can put some or all of your Snow into a savings account. Saving helps you grow your Snow faster, so it's a good idea to try it."
   ];
 
   const fiveIncorrectPrompt = [
-    "It looks like you have gotten five problems incorrect in a row. First of all, good job. You are currently pushing yourself, and you keep showing up even in the face of difficulty.",
-    "The game should go back to some more manageable problems for you to practice, but take a look at the learn section and review the operation you are on.",
-    "Do additional research if necessary, or ask a friend or teacher for help. Don't be afraid to ask questions or seek out help. This is how you learn, and you're doing a great job. Keep it up."
+    "It looks like you missed five questions in a row. That's okay. Good job for trying! You are working hard, and it's great that you’re still playing, even when it's tough.",
+    "The game will soon give you easier problems to help you practice. You can also look at the learn section to review what you’re working on.",
+    "If you need more help, don’t be afraid to ask a friend or teacher. Asking questions is how you learn, and you’re doing amazing! Keep up the good work!"
   ];
 
   const tenIncorrectPrompt = [
-    "It looks like you have gotten ten problems incorrect in a row. First of all, outstanding job. You are really pushing yourself, and you keep showing up even in the face of tremendous difficulty. Be sure to take a look at the learn section and review the operation you are on.",
-    "Do additional research if necessary, or ask a friend or teacher for help. Review the concepts and do a little bit of practice on your own. Once you've done this, return and continue playing after taking a break.",
-    "Remember, you learn far more when you lose than when you win, so if you see others around you getting problems correct, don't get upset. Odds are that you are learning more than they are, and they should be jealous of you. Keep going. I believe in you and have confidence in yourself."
+    "It looks like you missed ten questions in a row. That’s awesome! You are really challenging yourself, and it’s great that you’re still playing, even though it’s hard. Take a look at the learn section to review what you’re working on.",
+    "You can ask a friend or teacher for help or practice a little bit on your own. After you take a short break, come back and keep playing.",
+    "Remember, you learn more when you make mistakes! If you see others getting the answers right, don’t worry. You are learning a lot, and that’s something to be proud of! I believe in you. Keep going!"
   ];
 
   // Let variables
@@ -331,10 +325,10 @@ document.addEventListener("DOMContentLoaded", function() {
       if (score >= SCORE_LEVEL_UP) {
         if (levelUpPrompts[operationIndex] === false) {
           let levelUpPrompt = [
-            `Congratulations! You've shown mastery in ${operations[operationIndex]} Phase ${phase}, and you should be incredibly proud of your accomplishment. Your dedication and determination have paid off.`, 
-            "Now, take a moment to reflect on your journey so far. Consider the problems you struggled with, and then think about the moments when you successfully solved a problem. Did you learn anything from those moments of success?", 
-            "Most likely not, because you already knew the answer. Your previous mistakes and failures led you to be able to answer a problem correctly. As you continue forward, keep in mind that it's through failure that you learn, and success simply confirms that you've learned something."
-          ];
+            `Great job! You did awesome in ${operations[operationIndex]} Phase ${phase}! You should feel really proud of what you did!`,
+            "Now, think about how far you've come. Remember some tricky problems you worked on, and think about the times you got the answers right. Did you learn something when you solved them?",
+            "You probably didn't learn anything new because you already knew the answer! Remember, it's okay to make mistakes. They help you learn. Getting the right answer just means you’ve already learned something!"
+          ];        
           levelUpPrompts[operationIndex] = true;
           displayModal(levelUpPrompt);
         }
@@ -351,10 +345,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (shownPromptTwo === false) {
       displayModal(welcomePromptTwo);
       shownPromptTwo = true;
-    }
-    if (shownPromptThree === false && score === 5) {
-      displayModal(welcomePromptThree);
-      shownPromptThree = true;
     }
     updateProgress(score % 10);
     updateScoreUI();
