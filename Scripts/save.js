@@ -129,5 +129,3 @@ takeSnowBtn.addEventListener("click", function() {
 });
 
 loadGameState();
-
-// If you're reading this, I hope you have a great day, and yes, I know my code writing sucks:)

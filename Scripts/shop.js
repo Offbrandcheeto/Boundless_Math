@@ -309,7 +309,7 @@ function saveGameState() {
     newtUnlocked: newtUnlocked,
     meganUnlocked: meganUnlocked,
     benUnlocked: benUnlocked,
-    willUnlocked: cassieUnlocked,
+    willUnlocked: willUnlocked,
     primUnlocked: primUnlocked,
     katnissUnlocked: katnissUnlocked,
     finnickUnlocked: finnickUnlocked,
@@ -549,5 +549,3 @@ elitePackEl.addEventListener("click", elitePackOpen);
 
 loadGameState();
 galleryUpdate();
-
-// If you're reading this, I hope you have a great day, and yes, I know my code writing sucks:)

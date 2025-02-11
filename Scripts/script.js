@@ -57,27 +57,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Prompts
   const welcomePrompt = [
-    "Boundless Math is a fun game where the math gets easier or harder depending on how you're doing. If you get questions right, the questions will get harder. If you get questions wrong, the questions will get easier.",
-    "You start by adding numbers. Then, you’ll do subtraction, multiplication, and division. After division, the game starts over with adding, but it'll be harder this time.",
-    "The math will help you get better and better. It might seem hard, but if you keep practicing, you’ll get super good at it!"
+    "Boundless Math is a math game designed to adjust to your current skills. When you start to answer questions correctly, they will become more difficult. If you start getting questions incorrect, they will begin to get less difficult.",
+    "You'll start with addition, then move to subtraction, multiplication, and division. After you complete division, the game will return to addition, but the problems will be more challenging than they were the previous time through.",
+    "Adjusting the difficulty to how you're performing allows you to make the most growth. It will sometimes be challenging, but you learn the most by facing challenges. You got this. Remember to ask questions, and most importantly, have fun!"
   ];
 
   const welcomePromptTwo = [
-    "Great job answering your first question and starting your journey! The first step is always the hardest, and now I'd like to tell you about two important parts of the game: the Shop and Save sections.",
-    "In the Shop, you can buy packs of cards with different penguins to collect. You use the Snow you earn by answering questions correctly to buy these packs.",
-    "In the Save section, you can put some or all of your Snow into a savings account. Saving helps you grow your Snow faster, so it's a good idea to try it."
+    "Great job answering your first question and starting your journey! The first step is always the hardest, and as you keep taking more, you will see your math skills grow and grow! But, now I'd like to tell you about two important parts of the game: the Shop and Save sections.",
+    "In the Shop, you can buy packs of cards that contain different penguins to collect. You use the Snow you earn by answering questions correctly to purchase these packs.",
+    "In the Save section of the game, you can put some or all of your Snow into a savings account. Saving helps you grow your Snow faster, so it's a good idea to start saving it as soon as possible."
   ];
 
   const fiveIncorrectPrompt = [
-    "It looks like you missed five questions in a row. That's okay. Good job for trying! You are working hard, and it's great that you’re still playing, even when it's tough.",
-    "The game will soon give you easier problems to help you practice. You can also look at the learn section to review what you’re working on.",
-    "If you need more help, don’t be afraid to ask a friend or teacher. Asking questions is how you learn, and you’re doing amazing! Keep up the good work!"
+    "It looks like you've missed five questions in a row, and that's completely okay! The whole point of this game is to push your current math fact abilities to the limit so you can learn and sharpen your skills. ",
+    "Always remember that there will be difficult times for anyone when learning something new, and these challenges are actually the most essential part of the learning process. Your talents improve the most when you push yourself and face challenging problems. ",
+    "Maybe take a moment to review the learn section of the math operation you're struggling with, ask a teacher or fellow student for help, or do some research online if you feel stuck. Keep it up!"
   ];
 
   const tenIncorrectPrompt = [
-    "It looks like you missed ten questions in a row. That’s awesome! You are really challenging yourself, and it’s great that you’re still playing, even though it’s hard. Take a look at the learn section to review what you’re working on.",
-    "You can ask a friend or teacher for help or practice a little bit on your own. After you take a short break, come back and keep playing.",
-    "Remember, you learn more when you make mistakes! If you see others getting the answers right, don’t worry. You are learning a lot, and that’s something to be proud of! I believe in you. Keep going!"
+    "It looks like you missed ten questions in a row, and that's totally fine! You are challenging yourself and taking on some tough questions. You're currently exploring the limits of your math fact skills, and it's completely normal to get some questions wrong at this point.",
+    "You can ask a friend or teacher for help or practice a little bit on your own. After you take a short break, come back and keep playing. Returning and continuing to play after a tough stretch will help build your math skills and resilience.",
+    "Always remember that you learn more when you make mistakes. If you see others getting correct answers, don't worry about it. You are learning a lot and challenging yourself. That's something to be proud of, and you will make progress if you keep doing the work!"
   ];
 
   // Let variables
@@ -325,9 +325,9 @@ document.addEventListener("DOMContentLoaded", function() {
       if (score >= SCORE_LEVEL_UP) {
         if (levelUpPrompts[operationIndex] === false) {
           let levelUpPrompt = [
-            `Great job! You did awesome in ${operations[operationIndex]} Phase ${phase}! You should feel really proud of what you did!`,
-            "Now, think about how far you've come. Remember some tricky problems you worked on, and think about the times you got the answers right. Did you learn something when you solved them?",
-            "You probably didn't learn anything new because you already knew the answer! Remember, it's okay to make mistakes. They help you learn. Getting the right answer just means you’ve already learned something!"
+            `Great job! You've completed ${operations[operationIndex]} Phase ${phase} and should be very proud of your work. You're improving your math skills step by step and setting yourself up for success in the future.`,
+            "But I want you to think about your journey so far and reflect on your experiences. Think about when you answered some questions correctly and when you answered some incorrectly. When did you learn more?",
+            "Almost always, you learn more when you get a question wrong because your brain hasn't quite learned how to reach the correct answer. It feels good to get a question correct, and it's crucial for your brain to receive this feedback to know that you're learning, but you don't learn anything new when you answer a question correctly. Keep this in mind as you carry on, and keep up the good work!"
           ];        
           levelUpPrompts[operationIndex] = true;
           displayModal(levelUpPrompt);
@@ -436,5 +436,3 @@ document.addEventListener("DOMContentLoaded", function() {
   updateScoreUI();
   saveGameState();
 });
-
-// If you're reading this, I hope you have a great day, and yes, I know my code writing sucks:)
