@@ -11,7 +11,7 @@ const modalInput = document.getElementById("modal-input");
 const interestEarnedEl = document.getElementById("interest-earned");
 
 const addMsg = "How much Snow would you like to add?";
-const takeMsg = "How much Snow would you like to take? (ONLY WHOLE NUMBERS)";
+const takeMsg = "How much Snow would you like to take (only whole numbers)?";
 
 // Let variables
 let snow; 

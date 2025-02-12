@@ -289,9 +289,7 @@ input::-webkit-inner-spin-button {
 }
 
 .text-section .border {
-  border: 12px var(--main-text-color) double;
   padding: 0 1.5rem;
-  text-align: justify;
 }
 
 .top-margin {
@@ -310,7 +308,7 @@ input::-webkit-inner-spin-button {
 }
 
 .text-section .text-p {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   line-height: 1.8;
   font-weight: var(--semi-bold);
   padding: 0.75rem 0.25rem;
@@ -334,12 +332,10 @@ input::-webkit-inner-spin-button {
 
 .learn-section .text-heading-medium {
   text-align: center;
-  margin: 1.5rem auto;
-  font-size: 2.1rem;
+  margin: 2rem auto 0.5rem;
+  font-size: 2rem;
+  font-style: italic;
   font-weight: var(--semi-bold);
-  border-top: 3px solid var(--main-text-color);
-  border-bottom: 3px solid var(--main-text-color);
-  padding: 0.25rem;
 }
 
 /* Modal styles */

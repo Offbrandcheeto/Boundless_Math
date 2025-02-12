@@ -179,10 +179,6 @@
     width: 95%;
   }
 
-  .text-section .border {
-    border: 3px var(--main-text-color) solid;
-  }
-
   .text-section .text-heading-large {
     font-size: 2rem;
     border-top: 4px solid var(--main-text-color);
@@ -203,8 +199,6 @@
   }
   .learn-section .text-heading-medium {
     margin: 0.25rem auto;
-    border-top: none;
-    border-bottom: 2px solid var(--main-text-color);
   }
 
   /* Scoreboard */
@@ -272,7 +266,6 @@
   }
   
   .text-section .border {
-    border: 3px var(--main-text-color) solid;
     padding: 0.5rem;
   }
 
@@ -304,8 +297,6 @@
   /* Learn section */
   .learn-section .text-heading-medium {
     margin: 0.25rem auto;
-    border-top: none;
-    border-bottom: 1px solid var(--main-text-color);
   }
 
   /* Game section */
